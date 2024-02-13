@@ -9,11 +9,11 @@ class Aluno {
 
 
     // construtor
-    public Aluno(String nome) {
+    public Aluno(String nome, int idade, ArrayList<String> listaDeCursos) {
         this.nome = nome;
-        this.listaDeCursos = new ArrayList<>();
+        this.idade = idade;
+        this.listaDeCursos = listaDeCursos;
     }
-
 
     // métodos
     public void listarCursos() {
@@ -48,6 +48,14 @@ class Aluno {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+
+    public void setIdade(int idade) {
+        this.idade = idade;
     }
 
     public ArrayList<String> getListaDeCursos() {
