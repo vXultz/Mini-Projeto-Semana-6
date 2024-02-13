@@ -4,6 +4,7 @@ class Aluno {
 
     // atributos
     private String nome;
+    private int idade;
     private ArrayList<String> listaDeCursos;
 
 
