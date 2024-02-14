@@ -5,6 +5,10 @@ class Curso {
     public Curso(String nome) {
         this.nome = nome;
     }
+    public Curso(String nome, Professor professor) {
+        this.nome = nome;
+        this.professor = professor;
+    }
 
     public String getNome() {
         return nome;
