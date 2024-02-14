@@ -7,7 +7,6 @@ class Aluno {
     private String nome;
     private int idade;
     private List<Curso> listaDeCursos = new ArrayList<>();
-    private Turma turmaSelecionada;
 
 
     // construtores
@@ -36,11 +35,6 @@ class Aluno {
         }
     }
 
-    public void selecionarTurma(Turma turma) {
-        turma.adicionarAluno(this);
-        this.turmaSelecionada = turma;
-    }
-
     // getters e setters
     public String getNome() {
         return nome;
@@ -65,4 +59,9 @@ class Aluno {
     public void setListaDeCursos(ArrayList<Curso> listaDeCursos) {
         this.listaDeCursos = listaDeCursos;
     }
+
+    public void setListaDeCursos(List<Curso> listaDeCursos) {
+        this.listaDeCursos = listaDeCursos;
+    }
+
 }
