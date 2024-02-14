@@ -2,6 +2,7 @@ public class Funcionario implements InterfaceFuncionario{
 
     private String nome;
     private double salario;
+    private int tempoDeCargo;
 
     public Funcionario(String nome, double salario) {
         this.nome = nome;
@@ -28,4 +29,11 @@ public class Funcionario implements InterfaceFuncionario{
         this.salario = salario;
     }
 
+    public int getTempoDeCargo() {
+        return tempoDeCargo;
+    }
+
+    public void setTempoDeCargo(int tempoDeCargo) {
+        this.tempoDeCargo = tempoDeCargo;
+    }
 }
