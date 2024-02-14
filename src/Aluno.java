@@ -11,20 +11,18 @@ class Aluno {
 
 
     // construtores
-
-
     public Aluno(String nome, int idade) {
         this.nome = nome;
         this.idade = idade;
         this.listaDeCursos = new ArrayList<>();
     }
 
-    public Aluno(String nome, int idade, Turma turmaSelecionada) {
-        this.nome = nome;
-        this.idade = idade;
-        this.listaDeCursos = new ArrayList<>();
-        this.turmaSelecionada = turmaSelecionada;
-    }
+//    public Aluno(String nome, int idade, Turma turmaSelecionada) {
+//        this.nome = nome;
+//        this.idade = idade;
+//        this.listaDeCursos = new ArrayList<>();
+//        this.turmaSelecionada = turmaSelecionada;
+//    }
 
     // métodos
     public void listarCursos() {
@@ -38,6 +36,10 @@ class Aluno {
         }
     }
 
+    public void selecionarTurma(Turma turma) {
+        turma.adicionarAluno(this);
+        this.turmaSelecionada = turma;
+    }
 
     // getters e setters
     public String getNome() {
