@@ -27,19 +27,6 @@ class Aluno {
         }
     }
 
-    public void adicionarCurso(String curso) {
-        listaDeCursos.add(curso);
-        System.out.println("Parabéns! Você se matriculou no curso: " + curso);
-    }
-
-    public void removerCurso(String curso) {
-        if (listaDeCursos.remove(curso)) {
-            System.out.println("Matrícula no curso " + curso + " cancelada!");
-        } else {
-            System.out.println("Você não está matriculado no curso " + curso);
-        }
-    }
-
 
     // getters e setters
     public String getNome() {
