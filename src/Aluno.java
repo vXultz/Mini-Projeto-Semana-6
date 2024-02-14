@@ -16,13 +16,6 @@ class Aluno {
         this.listaDeCursos = new ArrayList<>();
     }
 
-//    public Aluno(String nome, int idade, Turma turmaSelecionada) {
-//        this.nome = nome;
-//        this.idade = idade;
-//        this.listaDeCursos = new ArrayList<>();
-//        this.turmaSelecionada = turmaSelecionada;
-//    }
-
     // métodos
     public void listarCursos() {
         if (listaDeCursos.isEmpty()) {
@@ -56,12 +49,7 @@ class Aluno {
         return listaDeCursos;
     }
 
-    public void setListaDeCursos(ArrayList<Curso> listaDeCursos) {
-        this.listaDeCursos = listaDeCursos;
-    }
-
     public void setListaDeCursos(List<Curso> listaDeCursos) {
         this.listaDeCursos = listaDeCursos;
     }
-
 }

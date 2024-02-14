@@ -19,15 +19,18 @@ public class Turma {
 
     public void adicionarAluno(Aluno aluno){
         listaDeAlunos.add(aluno);
+        aluno.getListaDeCursos().add(curso);
     }
 
     public void removerAluno(Aluno aluno) {
         listaDeAlunos.remove(aluno);
+        aluno.getListaDeCursos().remove(curso);
     }
 
     public void removerAluno(int indiceAluno){
         if(indiceAluno >= 0 && indiceAluno < listaDeAlunos.size()){
-            listaDeAlunos.remove(indiceAluno);
+            Aluno alunoRemovido = listaDeAlunos.remove(indiceAluno);
+            alunoRemovido.getListaDeCursos().remove(curso);
         } else {
             System.out.println("Indice não encontrado");
         }
