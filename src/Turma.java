@@ -21,6 +21,10 @@ public class Turma {
         listaDeAlunos.add(aluno);
     }
 
+    public void removerAluno(Aluno aluno) {
+        listaDeAlunos.remove(aluno);
+    }
+
     public void removerAluno(int indiceAluno){
         if(indiceAluno >= 0 && indiceAluno < listaDeAlunos.size()){
             listaDeAlunos.remove(indiceAluno);
@@ -33,9 +37,6 @@ public class Turma {
         return listaDeAlunos;
     }
 
-    public void setListaDeAlunos(List<Aluno> listaDeAlunos) {
-        this.listaDeAlunos = listaDeAlunos;
-    }
 
     public int getAno() {
         return ano;

@@ -1,18 +1,29 @@
 import java.util.ArrayList;
+import java.util.List;
 
 class Aluno {
 
     // atributos
     private String nome;
     private int idade;
-    private ArrayList<String> listaDeCursos;
+    private List<Curso> listaDeCursos = new ArrayList<>();
+    private Turma turmaSelecionada;
 
 
-    // construtor
-    public Aluno(String nome, int idade, ArrayList<String> listaDeCursos) {
+    // construtores
+
+
+    public Aluno(String nome, int idade) {
         this.nome = nome;
         this.idade = idade;
-        this.listaDeCursos = listaDeCursos;
+        this.listaDeCursos = new ArrayList<>();
+    }
+
+    public Aluno(String nome, int idade, Turma turmaSelecionada) {
+        this.nome = nome;
+        this.idade = idade;
+        this.listaDeCursos = new ArrayList<>();
+        this.turmaSelecionada = turmaSelecionada;
     }
 
     // métodos
@@ -21,8 +32,8 @@ class Aluno {
             System.out.println(nome + " não está matriculado em nenhum curso.");
         } else {
             System.out.println("Cursos matriculados:");
-            for (String curso : listaDeCursos) {
-                System.out.println(curso);
+            for (Curso curso : listaDeCursos) {
+                System.out.println(curso.getNome());
             }
         }
     }
@@ -45,11 +56,11 @@ class Aluno {
         this.idade = idade;
     }
 
-    public ArrayList<String> getListaDeCursos() {
+    public List<Curso> getListaDeCursos() {
         return listaDeCursos;
     }
 
-    public void setListaDeCursos(ArrayList<String> listaDeCursos) {
+    public void setListaDeCursos(ArrayList<Curso> listaDeCursos) {
         this.listaDeCursos = listaDeCursos;
     }
 }
