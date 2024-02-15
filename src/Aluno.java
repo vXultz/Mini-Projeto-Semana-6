@@ -1,3 +1,5 @@
+import Aluno.EnumStatusMatricula;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +9,7 @@ class Aluno {
     private String nome;
     private int idade;
     private List<Curso> listaDeCursos = new ArrayList<>();
+    private EnumStatusMatricula statusMatricula;
 
 
     // construtores
@@ -52,4 +55,22 @@ class Aluno {
     public void setListaDeCursos(List<Curso> listaDeCursos) {
         this.listaDeCursos = listaDeCursos;
     }
+
+    public List<Curso> addCurso( Curso curso) {
+        this.listaDeCursos.add(curso);
+        return this.listaDeCursos;
+    }
+
+    public EnumStatusMatricula getStatusMatricula() {
+        return statusMatricula;
+    }
+    public String getStatusMatricula(boolean sigla) {
+        return statusMatricula.getSigla();
+    }
+
+    public void setStatusMatricula(EnumStatusMatricula statusMatricula) {
+        this.statusMatricula = statusMatricula;
+    }
+
+
 }
