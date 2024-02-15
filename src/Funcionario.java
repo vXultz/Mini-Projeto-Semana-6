@@ -3,10 +3,13 @@ public class Funcionario implements InterfaceFuncionario{
     private String nome;
     private double salario;
     private int tempoDeCargo;
+    private CargoDoFuncionario cargo;
 
-    public Funcionario(String nome, double salario) {
+    public Funcionario(String nome, double salario, int tempoDeCargo, CargoDoFuncionario cargo) {
         this.nome = nome;
         this.salario = salario;
+        this.tempoDeCargo = tempoDeCargo;
+        this.cargo = cargo;
     }
 
     public void promover() {
@@ -35,5 +38,13 @@ public class Funcionario implements InterfaceFuncionario{
 
     public void setTempoDeCargo(int tempoDeCargo) {
         this.tempoDeCargo = tempoDeCargo;
+    }
+
+    public CargoDoFuncionario getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(CargoDoFuncionario cargo) {
+        this.cargo = cargo;
     }
 }
