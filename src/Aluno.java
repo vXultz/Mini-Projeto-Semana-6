@@ -56,11 +56,6 @@ class Aluno {
         this.listaDeCursos = listaDeCursos;
     }
 
-    public List<Curso> addCurso( Curso curso) {
-        this.listaDeCursos.add(curso);
-        return this.listaDeCursos;
-    }
-
     public EnumStatusMatricula getStatusMatricula() {
         return statusMatricula;
     }
