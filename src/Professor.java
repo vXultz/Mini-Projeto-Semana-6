@@ -1,37 +1,24 @@
-class Professor {
-    private String nome;
+class Professor extends Funcionario {
     private int idade;
-    private int tempoDeTrabalho;
 
-    public Professor(String nome, int idade, int tempoDeTrabalho) {
-        this.nome = nome;
+    public Professor(String nome, double salario, int tempoDeCargo, CargoDoFuncionario cargo , int idade) {
+        super(nome, salario, tempoDeCargo, cargo);
         this.idade = idade;
-        this.tempoDeTrabalho = tempoDeTrabalho;
     }
 
-    public String getNome() {
-        return nome;
+    public Professor(String nome, int tempoDeCargo, int idade){
+        super(nome, tempoDeCargo);
+        this.idade = idade;
     }
 
     public int getIdade() {
         return idade;
     }
 
-    public int getTempoDeTrabalho() {
-        return tempoDeTrabalho;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public void setIdade(int idade) {
         this.idade = idade;
     }
 
-    public void setTempoDeTrabalho(int tempoDeTrabalho) {
-        this.tempoDeTrabalho = tempoDeTrabalho;
-    }
 }
 
 
