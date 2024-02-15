@@ -19,9 +19,10 @@ public class Main {
                     TestesAluno testesAluno = new TestesAluno(userInterface);
                     Aluno alunoTeste1 = testesAluno.criarAluno("Peter Parker", 18);
                     Aluno alunoTeste2 = testesAluno.criarAluno();
-                    Curso newCurso = new Curso("Curso de Exemplo 1");
-                    Curso newCurso2 = new Curso("Curso de Exemplo 2");
-                    Curso newCurso3 = new Curso("Curso de Exemplo 3");
+                    Professor professor = new Professor("Prof Teste", 41, 10);
+                    Curso newCurso = new Curso("Curso de Exemplo 1", professor);
+                    Curso newCurso2 = new Curso("Curso de Exemplo 2", professor);
+                    Curso newCurso3 = new Curso("Curso de Exemplo 3", professor);
                     testesAluno.matricularAluno(alunoTeste1, newCurso);
                     testesAluno.matricularAluno(alunoTeste1, newCurso2);
                     testesAluno.matricularAluno(alunoTeste1, newCurso3);

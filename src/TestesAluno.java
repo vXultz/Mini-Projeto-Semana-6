@@ -31,13 +31,14 @@ public class TestesAluno {
     public List<Curso> matricularAluno(Aluno aluno, Curso curso){
         userInterface.writeMenuOption("");
         userInterface.writeMenuOption("====== Teste de Matricula do Aluno ====== ");
-        List<Curso> listaCursosAluno = aluno.addCurso(curso);
+        Turma turma = new Turma(2024, curso);
+        turma.adicionarAluno(aluno);
         userInterface.writeMenuOption("Aluno ["+ aluno.getNome() +"], idade ["+ aluno.getIdade() +"] matriculado com sucesso.");
         userInterface.writeMenuOption(" Lista de cursos:");
-        for (Curso cursoAluno: listaCursosAluno ) {
-            userInterface.writeMenuOption("Curso ["+ cursoAluno.getNome()+"] Professor [" + cursoAluno.getProfessor() +"]");
+        for (Curso cursoAluno: aluno.getListaDeCursos() ) {
+            userInterface.writeMenuOption("Curso ["+ cursoAluno.getNome()+"] Professor [" + cursoAluno.getProfessor().getNome() +"]");
         }
-        return listaCursosAluno;
+        return aluno.getListaDeCursos();
     }
 
     public void listEnumStatusMatricula(){
