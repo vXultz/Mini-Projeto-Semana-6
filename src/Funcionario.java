@@ -3,9 +3,9 @@ public class Funcionario implements InterfaceFuncionario{
     private String nome;
     private double salario;
     private int tempoDeCargo;
-    private CargoDoFuncionario cargo;
+    private EnumCargoFuncionario cargo;
 
-    public Funcionario(String nome, double salario, int tempoDeCargo, CargoDoFuncionario cargo) {
+    public Funcionario(String nome, double salario, int tempoDeCargo, EnumCargoFuncionario cargo) {
         this.nome = nome;
         this.salario = salario;
         this.tempoDeCargo = tempoDeCargo;
@@ -45,11 +45,11 @@ public class Funcionario implements InterfaceFuncionario{
         this.tempoDeCargo = tempoDeCargo;
     }
 
-    public CargoDoFuncionario getCargo() {
+    public EnumCargoFuncionario getCargo() {
         return cargo;
     }
 
-    public void setCargo(CargoDoFuncionario cargo) {
+    public void setCargo(EnumCargoFuncionario cargo) {
         this.cargo = cargo;
     }
 }
