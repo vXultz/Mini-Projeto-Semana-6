@@ -1,7 +1,9 @@
+import Funcionario.EnumCargoFuncionario;
+
 class Professor extends Funcionario {
     private int idade;
 
-    public Professor(String nome, double salario, int tempoDeCargo, CargoDoFuncionario cargo , int idade) {
+    public Professor(String nome, double salario, int tempoDeCargo, EnumCargoFuncionario cargo , int idade) {
         super(nome, salario, tempoDeCargo, cargo);
         this.idade = idade;
     }

@@ -1,3 +1,5 @@
+import Funcionario.EnumCargoFuncionario;
+
 public class Funcionario implements InterfaceFuncionario{
 
     private String nome;
