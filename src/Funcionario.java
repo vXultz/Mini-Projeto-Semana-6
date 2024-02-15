@@ -12,6 +12,11 @@ public class Funcionario implements InterfaceFuncionario{
         this.cargo = cargo;
     }
 
+    public Funcionario(String nome, int tempoDeCargo) {
+        this.nome = nome;
+        this.tempoDeCargo = tempoDeCargo;
+    }
+
     public void promover() {
         System.out.println("Funcionário(a) " + nome + " foi promovido(a)!");
     }
