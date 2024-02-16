@@ -18,7 +18,7 @@ class Professor extends Funcionario {
         return "Nome: " + getNome() + "/" + "Idade: " + idade +
                 "/" + "Salário" + getSalario() +
                 "/" + "Tempo de cargo: " + getTempoDeCargo() +
-                "/" + "Cargo: Professor";
+                "/" + "Cargo: " + getCargo();
     }
 
     public int getIdade() {
