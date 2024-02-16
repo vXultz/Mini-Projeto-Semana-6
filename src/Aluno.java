@@ -31,6 +31,13 @@ class Aluno {
         }
     }
 
+    @Override
+    public String toString(){
+        return "Nome: " + nome + "/" + "Idade: " + idade +
+                 "/" + "Lista de curso(s)" + listaDeCursos +
+                "/" + "Status da matrícula" + statusMatricula;
+    }
+
     // getters e setters
     public String getNome() {
         return nome;

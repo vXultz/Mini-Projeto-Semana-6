@@ -13,6 +13,14 @@ class Professor extends Funcionario {
         this.idade = idade;
     }
 
+    @Override
+    public String toString(){
+        return "Nome: " + getNome() + "/" + "Idade: " + idade +
+                "/" + "Salário" + getSalario() +
+                "/" + "Tempo de cargo: " + getTempoDeCargo() +
+                "/" + "Cargo: Professor";
+    }
+
     public int getIdade() {
         return idade;
     }

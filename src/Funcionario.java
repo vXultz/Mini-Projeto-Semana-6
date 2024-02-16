@@ -19,6 +19,12 @@ public class Funcionario implements InterfaceFuncionario{
         this.tempoDeCargo = tempoDeCargo;
     }
 
+    @Override
+    public String toString(){
+        return "Nome: " + nome + "/" + "Salário: " + salario +
+                "/" + "Cargo: " + cargo + "Tempo de cargo: " + tempoDeCargo;
+    }
+
     public void promover() {
         System.out.println("Funcionário(a) " + nome + " foi promovido(a)!");
     }
