@@ -4,7 +4,7 @@ class Curso {
 
     @Override
     public String toString(){
-        return "Curso: " + nome + "/" + "Lecionado por: " + professor;
+        return "Curso: " + nome + "/" + "Lecionado por: " + professor.getNome();
     }
 
     public Curso(String nome) {
