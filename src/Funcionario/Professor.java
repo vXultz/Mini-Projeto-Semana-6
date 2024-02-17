@@ -1,8 +1,5 @@
 package Funcionario;
 
-import Funcionario.EnumCargoFuncionario;
-import Funcionario.Funcionario;
-
 public class Professor extends Funcionario {
     private int idade;
 
@@ -16,6 +13,14 @@ public class Professor extends Funcionario {
         this.idade = idade;
     }
 
+    @Override
+    public String toString(){
+        return "Nome: " + getNome() + "/" + "Idade: " + idade +
+                "/" + "Salário" + getSalario() +
+                "/" + "Tempo de cargo: " + getTempoDeCargo() +
+                "/" + "Cargo: " + getCargo();
+    }
+
     public int getIdade() {
         return idade;
     }
@@ -25,6 +30,3 @@ public class Professor extends Funcionario {
     }
 
 }
-
-
-

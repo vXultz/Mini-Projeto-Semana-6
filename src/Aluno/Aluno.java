@@ -1,6 +1,5 @@
 package Aluno;
 
-
 import Curso.Curso;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +30,13 @@ public class Aluno {
                 System.out.println(curso.getNome());
             }
         }
+    }
+
+    @Override
+    public String toString(){
+        return "Nome: " + nome + "/" + "Idade: " + idade +
+                "/" + "Lista de curso(s)" + listaDeCursos +
+                "/" + "Status da matrícula" + statusMatricula;
     }
 
     // getters e setters
@@ -68,8 +74,6 @@ public class Aluno {
     public void setStatusMatricula(EnumStatusMatricula statusMatricula) {
         this.statusMatricula = statusMatricula;
     }
-
-
 
 
 }

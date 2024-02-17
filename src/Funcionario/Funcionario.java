@@ -1,9 +1,6 @@
 package Funcionario;
 
-import Funcionario.EnumCargoFuncionario;
-
-public class Funcionario implements InterfaceFuncionario {
-
+public class Funcionario implements InterfaceFuncionario{
     private String nome;
     private double salario;
     private int tempoDeCargo;
@@ -19,6 +16,12 @@ public class Funcionario implements InterfaceFuncionario {
     public Funcionario(String nome, int tempoDeCargo) {
         this.nome = nome;
         this.tempoDeCargo = tempoDeCargo;
+    }
+
+    @Override
+    public String toString(){
+        return "Nome: " + nome + "/" + "Salário: " + salario +
+                "/" + "Cargo: " + cargo + "Tempo de cargo: " + tempoDeCargo;
     }
 
     public void promover() {
