@@ -1,3 +1,8 @@
+package Turma;
+
+import Aluno.Aluno;
+import Curso.Curso;
+
 import java.util.ArrayList;
 import java.util.List;
 public class Turma {

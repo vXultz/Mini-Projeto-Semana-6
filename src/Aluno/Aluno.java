@@ -1,9 +1,11 @@
-import Aluno.EnumStatusMatricula;
+package Aluno;
 
+
+import Curso.Curso;
 import java.util.ArrayList;
 import java.util.List;
 
-class Aluno {
+public class Aluno {
 
     // atributos
     private String nome;
@@ -66,6 +68,8 @@ class Aluno {
     public void setStatusMatricula(EnumStatusMatricula statusMatricula) {
         this.statusMatricula = statusMatricula;
     }
+
+
 
 
 }

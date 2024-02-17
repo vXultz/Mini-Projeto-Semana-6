@@ -1,4 +1,7 @@
+package Funcionario;
+
 import Funcionario.EnumCargoFuncionario;
+import Funcionario.Funcionario;
 
 public class Diretor extends Funcionario {
 
