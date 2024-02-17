@@ -20,6 +20,12 @@ public class Funcionario implements InterfaceFuncionario{
     }
 
     @Override
+    public String toString(){
+        return "Nome: " + nome + "/" + "Salário: " + salario +
+                "/" + "Cargo: " + cargo + "Tempo de cargo: " + tempoDeCargo;
+    }
+
+    @Override
     public void promover() {
         try {
             if (this.cargo.getLevel() >= EnumCargoFuncionario.values().length) {
