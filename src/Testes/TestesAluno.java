@@ -19,29 +19,29 @@ public class TestesAluno {
 
     public Aluno criarAluno(String nome, int idade){
         userInterface.writeMenuOption("");
-        userInterface.writeMenuOption("====== Teste de Criação do Aluno.Aluno com parâmetros  ====== ");
+        userInterface.writeMenuOption("====== Teste de Criação do Aluno com parâmetros  ====== ");
         Aluno aluno = new Aluno(nome, idade);
-        userInterface.writeMenuOption("Aluno.Aluno ["+ aluno.getNome() +"], idade ["+ aluno.getIdade() +"] criado com sucesso");
+        userInterface.writeMenuOption("Aluno ["+ aluno.getNome() +"], idade ["+ aluno.getIdade() +"] criado com sucesso");
         return aluno;
     }
     public Aluno criarAluno(){
         userInterface.writeMenuOption("");
-        userInterface.writeMenuOption("====== Teste de Criação do Aluno.Aluno com overload  ====== ");
+        userInterface.writeMenuOption("====== Teste de Criação do Aluno com overload  ====== ");
         Random rand = new Random();
-        Aluno aluno = new Aluno("Aluno.Aluno teste nº "+ rand.nextInt(99) , rand.nextInt(99));
-        userInterface.writeMenuOption("Aluno.Aluno ["+ aluno.getNome() +"], idade ["+ aluno.getIdade() +"] criado com sucesso");
+        Aluno aluno = new Aluno("Aluno teste nº "+ rand.nextInt(99) , rand.nextInt(99));
+        userInterface.writeMenuOption("Aluno ["+ aluno.getNome() +"], idade ["+ aluno.getIdade() +"] criado com sucesso");
         return aluno;
     }
 
     public List<Curso> matricularAluno(Aluno aluno, Curso curso){
         userInterface.writeMenuOption("");
-        userInterface.writeMenuOption("====== Teste de Matricula do Aluno.Aluno ====== ");
+        userInterface.writeMenuOption("====== Teste de Matricula do Aluno ====== ");
         Turma turma = new Turma(2024, curso);
         turma.adicionarAluno(aluno);
-        userInterface.writeMenuOption("Aluno.Aluno ["+ aluno.getNome() +"], idade ["+ aluno.getIdade() +"] matriculado com sucesso.");
+        userInterface.writeMenuOption("Aluno ["+ aluno.getNome() +"], idade ["+ aluno.getIdade() +"] matriculado com sucesso.");
         userInterface.writeMenuOption(" Lista de cursos:");
         for (Curso cursoAluno: aluno.getListaDeCursos() ) {
-            userInterface.writeMenuOption("Curso.Curso ["+ cursoAluno.getNome()+"] Funcionario.Professor [" + cursoAluno.getProfessor().getNome() +"]");
+            userInterface.writeMenuOption("Curso ["+ cursoAluno.getNome()+"] Professor [" + cursoAluno.getProfessor().getNome() +"]");
         }
         return aluno.getListaDeCursos();
     }
