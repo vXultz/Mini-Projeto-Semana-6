@@ -23,10 +23,38 @@ public class Funcionario implements InterfaceFuncionario{
         return "Nome: " + nome + "/" + "Salário: " + salario +
                 "/" + "Cargo: " + cargo + "Tempo de cargo: " + tempoDeCargo;
     }
-
+  
+    @Override
     public void promover() {
-        System.out.println("Funcionário(a) " + nome + " foi promovido(a)!");
+        try {
+            if (this.cargo.getLevel() >= EnumCargoFuncionario.values().length) {
+                throw new RuntimeException("O funcionário já está no nível máximo!");
+            }
+            this.cargo = EnumCargoFuncionario.getCargoByLevel(this.cargo.getLevel() + 1);
+        } catch (RuntimeException e) {
+            System.out.println("Erro ao promover o funcionário: " + e.getMessage());
+        } finally {
+            System.out.println("Processo de promoção finalizado.");
+        }
     }
+
+//    @Override
+//    public void promover() {
+//        int nivelAtual = cargo.getLevel();
+//        switch (nivelAtual) {
+//            case 1:
+//                cargo = EnumCargoFuncionario.EXPERIENTE;
+//                break;
+//            case 2:
+//                cargo = EnumCargoFuncionario.AVANCADO;
+//                break;
+//            case 3:
+//                System.out.println("O funcionário " + nome + " já está no nível mais alto do cargo!");
+//                break;
+//            default:
+//                System.out.println("Nível de promoção inválido.");
+//        }
+//    }
 
     public String getNome() {
         return nome;
