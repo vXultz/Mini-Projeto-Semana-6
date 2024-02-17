@@ -38,23 +38,6 @@ public class Funcionario implements InterfaceFuncionario{
         }
     }
 
-//    @Override
-//    public void promover() {
-//        int nivelAtual = cargo.getLevel();
-//        switch (nivelAtual) {
-//            case 1:
-//                cargo = EnumCargoFuncionario.EXPERIENTE;
-//                break;
-//            case 2:
-//                cargo = EnumCargoFuncionario.AVANCADO;
-//                break;
-//            case 3:
-//                System.out.println("O funcionário " + nome + " já está no nível mais alto do cargo!");
-//                break;
-//            default:
-//                System.out.println("Nível de promoção inválido.");
-//        }
-//    }
 
     public String getNome() {
         return nome;
