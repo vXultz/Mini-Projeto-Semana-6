@@ -33,11 +33,12 @@ public class Turma {
     }
 
     public void removerAluno(int indiceAluno){
-        if(indiceAluno >= 0 && indiceAluno < listaDeAlunos.size()){
+        try {
             Aluno alunoRemovido = listaDeAlunos.remove(indiceAluno);
             alunoRemovido.getListaDeCursos().remove(curso);
-        } else {
-            System.out.println("Indice não encontrado");
+            System.out.println("Aluno removido!");
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Não existe aluno com este índice.");
         }
     }
 
