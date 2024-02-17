@@ -6,7 +6,7 @@ import java.util.Map;
 public enum EnumCargoFuncionario {
     INICIANTE("Iniciante", 1),
     EXPERIENTE("Experiente", 2),
-    AVANÇADO("Avançado", 3);
+    AVANCADO("Avançado", 3);
 
     private final String formatedValue;
     private final int level;
