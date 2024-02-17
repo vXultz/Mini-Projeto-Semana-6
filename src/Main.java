@@ -1,4 +1,9 @@
+import Aluno.Aluno;
+import Curso.Curso;
+import Funcionario.Professor;
 import SystemOutputs.UserInterface;
+import Testes.TestesAluno;
+import Testes.TestesFuncionario;
 
 import java.util.Scanner;
 
@@ -36,7 +41,7 @@ public class Main {
                     testesFuncEnum.listEnumCargoFuncionario();
                     break;
                 case 0:
-                    userInterface.writeMenuOption("Saindo do meu de Administração...");
+                    userInterface.writeMenuOption("Saindo do menu de Administração...");
             }
             userInterface.writeMenuOption("Pressione [ENTER] para continuar");
             scannerObj.nextLine();

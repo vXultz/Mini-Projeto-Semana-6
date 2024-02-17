@@ -1,9 +1,10 @@
-import Aluno.EnumStatusMatricula;
+package Aluno;
 
+import Curso.Curso;
 import java.util.ArrayList;
 import java.util.List;
 
-class Aluno {
+public class Aluno {
 
     // atributos
     private String nome;
@@ -34,7 +35,7 @@ class Aluno {
     @Override
     public String toString(){
         return "Nome: " + nome + "/" + "Idade: " + idade +
-                 "/" + "Lista de curso(s)" + listaDeCursos +
+                "/" + "Lista de curso(s)" + listaDeCursos +
                 "/" + "Status da matrícula" + statusMatricula;
     }
 

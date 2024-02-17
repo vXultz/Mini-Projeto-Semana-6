@@ -1,5 +1,10 @@
+package Testes;
+
+import Aluno.Aluno;
 import Aluno.EnumStatusMatricula;
+import Curso.Curso;
 import SystemOutputs.UserInterface;
+import Turma.Turma;
 
 import java.util.List;
 import java.util.Random;

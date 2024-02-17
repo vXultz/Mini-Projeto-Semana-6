@@ -1,4 +1,8 @@
-class Curso {
+package Curso;
+
+import Funcionario.Professor;
+
+public class Curso {
     private String nome;
     private Professor professor;
 

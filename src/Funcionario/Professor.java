@@ -1,6 +1,6 @@
-import Funcionario.EnumCargoFuncionario;
+package Funcionario;
 
-class Professor extends Funcionario {
+public class Professor extends Funcionario {
     private int idade;
 
     public Professor(String nome, double salario, int tempoDeCargo, EnumCargoFuncionario cargo , int idade) {
@@ -30,6 +30,3 @@ class Professor extends Funcionario {
     }
 
 }
-
-
-

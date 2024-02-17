@@ -1,7 +1,6 @@
-import Funcionario.EnumCargoFuncionario;
+package Funcionario;
 
 public class Funcionario implements InterfaceFuncionario{
-
     private String nome;
     private double salario;
     private int tempoDeCargo;
