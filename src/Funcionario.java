@@ -24,7 +24,7 @@ public class Funcionario implements InterfaceFuncionario{
         return "Nome: " + nome + "/" + "Salário: " + salario +
                 "/" + "Cargo: " + cargo + "Tempo de cargo: " + tempoDeCargo;
     }
-
+  
     @Override
     public void promover() {
         try {

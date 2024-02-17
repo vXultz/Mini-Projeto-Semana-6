@@ -2,6 +2,11 @@ class Curso {
     private String nome;
     private Professor professor;
 
+    @Override
+    public String toString(){
+        return "Curso: " + nome + "/" + "Lecionado por: " + professor.getNome();
+    }
+
     public Curso(String nome) {
         this.nome = nome;
     }
