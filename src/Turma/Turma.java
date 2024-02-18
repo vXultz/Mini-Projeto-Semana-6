@@ -22,9 +22,16 @@ public class Turma {
         }
     }
 
-    public void adicionarAluno(Aluno aluno){
-        listaDeAlunos.add(aluno);
-        aluno.getListaDeCursos().add(curso);
+    public void adicionarAluno(Aluno aluno) {
+        try {
+            if (listaDeAlunos.contains(aluno)) {
+                throw new AlunoDuplicadoException("O aluno informado já se encontra adicionado a lista deste curso.");
+            }
+            listaDeAlunos.add(aluno);
+            aluno.getListaDeCursos().add(curso);
+        } catch (AlunoDuplicadoException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public void removerAluno(Aluno aluno) {
