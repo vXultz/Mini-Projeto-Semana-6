@@ -3,19 +3,16 @@ package Aluno;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DadosAlunos{
+public class DadosAlunos {
 
-    private List<Aluno> listaDeAlunosTotal;
+    private static List<Aluno> listaDeAlunosTotal = new ArrayList<>();
 
-    public DadosAlunos() {
-        this.listaDeAlunosTotal = new ArrayList<>();
-    }
 
-    public void adicionarAluno(Aluno aluno) {
+    public static void adicionarAluno(Aluno aluno) {
         listaDeAlunosTotal.add(aluno);
     }
 
-    public void removerAluno(int id) {
+    public static void removerAluno(int id) {
         try {
             if (id >= 0 && id < listaDeAlunosTotal.size()) {
                 listaDeAlunosTotal.remove(id);
@@ -27,16 +24,12 @@ public class DadosAlunos{
         }
     }
 
-    public Aluno buscarAluno(int id) {
+    public static void buscarAluno(int id) {
         try {
-            if (id >= 0 && id < listaDeAlunosTotal.size()) {
-                return listaDeAlunosTotal.get(id);
-            } else {
-                throw new IndexOutOfBoundsException("ID inválido. Não existe nenhum aluno com o ID informado.");
-            }
+            Aluno alunoEncontrado = listaDeAlunosTotal.get(id);
+            System.out.println(alunoEncontrado.getNome());
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Erro ao buscar aluno: " + e.getMessage());
-            return null;
         }
     }
 }
