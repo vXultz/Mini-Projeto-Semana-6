@@ -27,7 +27,7 @@ public class DadosAlunos {
     public static void buscarAluno(int id) {
         try {
             Aluno alunoEncontrado = listaDeAlunosTotal.get(id);
-            System.out.println(alunoEncontrado.getNome());
+            System.out.println(alunoEncontrado);
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Erro ao buscar aluno: " + e.getMessage());
         }
