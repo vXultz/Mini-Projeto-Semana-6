@@ -13,7 +13,7 @@ public class DadosProfessor {
     public static void removerProfessores (int id) {
         try {
             listaDeProfessores.remove(id);
-            System.out.println("Professor removido com sucesso.");
+            System.out.println("Professor removido com sucesso!");
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Esse ID não pertence a nenhum professor listado.");
         }
