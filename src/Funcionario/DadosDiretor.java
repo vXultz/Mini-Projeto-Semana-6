@@ -27,7 +27,7 @@ public class DadosDiretor {
     public static void buscaDiretor(int id) {
         try {
             Diretor diretorEncontrado = listaDiretor.get(id);
-            System.out.println(diretorEncontrado);
+            System.out.println("ID: " + id + "\n" + diretorEncontrado);
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Esse ID não pertence a nenhum diretor listado");
         }
@@ -38,8 +38,8 @@ public class DadosDiretor {
             System.out.println("Não há nenhum diretor listado.");
         } else {
             System.out.println("Diretores Listados:");
-            for (Diretor diretor : listaDiretor) {
-                System.out.println(diretor.getNome());
+            for(int i = 0; i < listaDiretor.size(); i++){
+                System.out.println("\nID: " + i + "\n" + listaDiretor.get(i));
             }
         }
     }
