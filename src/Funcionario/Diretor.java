@@ -13,7 +13,7 @@ public class Diretor extends Funcionario {
     }
     @Override
     public String toString(){
-        return "Nome: " + getNome() + "/" + "Salário: " + getSalario() +
-                "/" + "Cargo: " + getCargo() + "Tempo de cargo: " + getTempoDeCargo();
+        return "Nome: " + getNome() + "\nSalário: " + getSalario() +
+                "\nCargo: " + getCargo() + "\nTempo de cargo: " + getTempoDeCargo();
     }
 }

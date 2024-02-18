@@ -33,5 +33,16 @@ public class DadosDiretor {
         }
     }
 
+    public static void mostrarDiretoresListados() {
+        if (listaDiretor.isEmpty()) {
+            System.out.println("Não há nenhum diretor listado.");
+        } else {
+            System.out.println("Diretores Listados:");
+            for (Diretor diretor : listaDiretor) {
+                System.out.println(diretor.getNome());
+            }
+        }
+    }
+
 
 }
