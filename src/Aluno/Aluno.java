@@ -18,6 +18,7 @@ public class Aluno {
         this.nome = nome;
         this.idade = idade;
         this.listaDeCursos = new ArrayList<>();
+        DadosAlunos.adicionarAluno(this);
     }
 
     // métodos
