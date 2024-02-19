@@ -10,7 +10,7 @@ public class DadosProfessor {
         listaDeProfessores.add(professor);
     }
 
-    public static Professor removerProfessores (int id) {
+    public static Professor removerProfessor (int id) {
         try {
             Professor professorRemovido = listaDeProfessores.remove(id);
             System.out.println("Professor removido com sucesso.");
@@ -22,7 +22,7 @@ public class DadosProfessor {
 
     }
 
-    public static Professor bucarProfessor (int id) {
+    public static Professor buscarProfessor (int id) {
         try {
             Professor professorEncontrado = listaDeProfessores.get(id);
             System.out.println("ID: " + id + "\n" + professorEncontrado);
