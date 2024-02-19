@@ -57,10 +57,11 @@ public class TestesAluno {
         userInterface.writeMenuOption("Teste de .valuesOf() do Enum Status de Matricula");
         userInterface.writeMenuOption("Opção [ATIVO] corresponde a sigla ["+ EnumStatusMatricula.valueOf("ATIVO").getSigla() +"]");
         userInterface.writeMenuOption("Sigla [" + EnumStatusMatricula.valueOf("FORMADO").getSigla() +"] corresponde ao status [FORMADO]");
+        userInterface.writeMenuOption("Status [" + EnumStatusMatricula.getStatusBySigla("T").name() + "] corresponde a sigla [T]");
 
         userInterface.writeMenuOption("");
         userInterface.writeMenuOption("Teste de Try Catch com levantamento de exceção do Enum Status de Matricula");
-        aluno.setStatusMatricula("INATIVO");
+        aluno.setStatusMatriculaBySigla("G");
         userInterface.writeMenuOption("Teste de Try Catch Finalizado");
 
     }

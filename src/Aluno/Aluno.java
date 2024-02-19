@@ -76,9 +76,9 @@ public class Aluno {
         this.statusMatricula = statusMatricula;
     }
 
-    public void setStatusMatricula(String status) {
+    public void setStatusMatriculaBySigla(String sigla) {
         try {
-            setStatusMatricula(EnumStatusMatricula.valueOf(status.toUpperCase()));
+            setStatusMatricula(EnumStatusMatricula.getStatusBySigla(sigla));
         } catch (Exception e) {
             System.err.println("Status de matrícula inválido");
         }
