@@ -46,7 +46,7 @@ public class TestesAluno {
         return aluno.getListaDeCursos();
     }
 
-    public void listEnumStatusMatricula(){
+    public void listEnumStatusMatricula(Aluno aluno){
         userInterface.writeMenuOption("");
         userInterface.writeMenuOption("Teste de .values() do Enum Status de Matricula");
         for (EnumStatusMatricula statusMatricula : EnumStatusMatricula.values()){
@@ -57,5 +57,11 @@ public class TestesAluno {
         userInterface.writeMenuOption("Teste de .valuesOf() do Enum Status de Matricula");
         userInterface.writeMenuOption("Opção [ATIVO] corresponde a sigla ["+ EnumStatusMatricula.valueOf("ATIVO").getSigla() +"]");
         userInterface.writeMenuOption("Sigla [" + EnumStatusMatricula.valueOf("FORMADO").getSigla() +"] corresponde ao status [FORMADO]");
+
+        userInterface.writeMenuOption("");
+        userInterface.writeMenuOption("Teste de Try Catch com levantamento de exceção do Enum Status de Matricula");
+        aluno.setStatusMatricula("INATIVO");
+        userInterface.writeMenuOption("Teste de Try Catch Finalizado");
+
     }
 }

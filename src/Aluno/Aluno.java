@@ -75,5 +75,12 @@ public class Aluno {
         this.statusMatricula = statusMatricula;
     }
 
-
+    public void setStatusMatricula(String status) {
+        try {
+            setStatusMatricula(EnumStatusMatricula.valueOf(status));
+        } catch (Exception e) {
+            //e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+    }
 }
