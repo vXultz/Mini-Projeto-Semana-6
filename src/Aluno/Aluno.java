@@ -18,6 +18,7 @@ public class Aluno {
         this.nome = nome;
         this.idade = idade;
         this.listaDeCursos = new ArrayList<>();
+        DadosAlunos.adicionarAluno(this);
     }
 
     // métodos
@@ -75,5 +76,11 @@ public class Aluno {
         this.statusMatricula = statusMatricula;
     }
 
-
+    public void setStatusMatriculaBySigla(String sigla) {
+        try {
+            setStatusMatricula(EnumStatusMatricula.getStatusBySigla(sigla));
+        } catch (Exception e) {
+            System.err.println("Status de matrícula inválido");
+        }
+    }
 }

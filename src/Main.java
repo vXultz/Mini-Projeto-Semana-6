@@ -34,7 +34,8 @@ public class Main {
                     break;
                 case 7:
                     TestesAluno testesAlunoEnum = new TestesAluno(userInterface);
-                    testesAlunoEnum.listEnumStatusMatricula();
+                    Aluno alunoTeste7 = testesAlunoEnum.criarAluno("Peter Parker", 18);
+                    testesAlunoEnum.listEnumStatusMatricula(alunoTeste7);
                     break;
                 case 8:
                     TestesFuncionario testesFuncEnum = new TestesFuncionario(userInterface);
