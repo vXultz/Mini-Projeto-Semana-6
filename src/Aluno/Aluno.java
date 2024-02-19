@@ -35,9 +35,9 @@ public class Aluno {
 
     @Override
     public String toString(){
-        return "Nome: " + nome + "/" + "Idade: " + idade +
-                "/" + "Lista de curso(s)" + listaDeCursos +
-                "/" + "Status da matrícula" + statusMatricula;
+        return "Nome: " + nome + "\nIdade: " + idade +
+                "\nLista de curso(s)" + listaDeCursos +
+                "\nStatus da matrícula" + statusMatricula;
     }
 
     // getters e setters
