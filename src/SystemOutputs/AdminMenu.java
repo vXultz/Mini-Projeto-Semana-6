@@ -15,9 +15,9 @@ public class AdminMenu {
     public static void runMenu(int menuTotalSize) {
         userInterface = new UserInterface(menuTotalSize);
         scannerObj = new Scanner(System.in);
-        int adminMenuChoice = 0;
+        int adminMenuChoice;
         do {
-            adminMenuChoice = printMenu(menuTotalSize);
+            adminMenuChoice = printMenu();
             switch (adminMenuChoice) {
                 case 1:
                     TestesAluno testesAluno = new TestesAluno(userInterface);
@@ -48,7 +48,7 @@ public class AdminMenu {
         } while (adminMenuChoice != 0);
     }
 
-    private static int printMenu(int menuTotalSize) {
+    private static int printMenu() {
         userInterface.writeMenuOption("========================================================");
         userInterface.writeMenuOption(" Tela de Administração do Sistema");
         userInterface.writeMenuOption("========================================================");

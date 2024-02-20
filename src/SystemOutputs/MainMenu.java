@@ -8,9 +8,9 @@ public class MainMenu  {
     public static void runMenu(int menuTotalSize) {
         userInterface = new UserInterface(menuTotalSize);
         scannerObj = new Scanner(System.in);
-        int menuChoice = 0;
+        int menuChoice;
         do {
-            menuChoice = mainMenu(menuTotalSize);
+            menuChoice = mainMenu();
             switch (menuChoice) {
                 case 1:
                     break;
@@ -22,7 +22,7 @@ public class MainMenu  {
         } while (menuChoice != 0);
     }
 
-    private static int mainMenu(int menuTotalSize) {
+    private static int mainMenu() {
         userInterface.writeMenuOption("========================================================");
         userInterface.writeMenuOption(" Menu principal (em construção) ");
         userInterface.writeMenuOption("========================================================");
@@ -36,6 +36,6 @@ public class MainMenu  {
         userInterface.writeMenuOption("Selecione uma opção:");
         userInterface.writeMenuOption("========================================================");
 
-        return userInterface.nextInt(scannerObj);
+        return UserInterface.nextInt(scannerObj);
     }
 }
