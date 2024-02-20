@@ -9,24 +9,7 @@ public class UserInterface {
         this.menuTotalSize = screenSize;
     }
 
-    public int adminMenu(Scanner scannerObj, int menuTotalSize) {
-        writeMenuOption("========================================================");
-        writeMenuOption(" Tela de Administração do Sistema");
-        writeMenuOption("========================================================");
-        writeMenuOption("[1] - Teste de Aluno");
-        //writeMenuOption("[] - Teste de Professor");
-        //writeMenuOption("[] - Teste de Curso");
-        //writeMenuOption("[] - Teste de Turma");
-        writeMenuOption("");
-        writeMenuOption("[7] - Listar Enum Status de Matricula");
-        writeMenuOption("[8] - Listar Enum Cargo de Funcionários");
-        writeMenuOption("[0] - Sair do Sistema");
-        writeMenuOption("");
-        writeMenuOption("Selecione uma opção:");
-        writeMenuOption("========================================================");
 
-        return nextInt(scannerObj);
-    }
 
     public static int nextInt(Scanner scn) {
         int i = scn.nextInt();
