@@ -32,7 +32,7 @@ public class DadosAlunos {
     public static Aluno buscarAluno(String alunoName) {
         try {
             Aluno response = listaDeAlunosTotal.stream() // transforma a lista de alunos em um stream,
-                    .filter(aluno -> alunoName.equals(aluno.getNome())) //percorre o stream comparando o param alunoName com o método getName() de cada item
+                    .filter(aluno -> alunoName.equalsIgnoreCase(aluno.getNome())) //percorre o stream comparando o param alunoName com o método getName() de cada item
                     .findFirst() // retornando o item se encontrar
                     .orElse(null); //retorna null se não encontrar;
             return response;

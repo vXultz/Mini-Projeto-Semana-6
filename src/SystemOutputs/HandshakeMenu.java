@@ -61,17 +61,17 @@ public class HandshakeMenu {
         int alunoMenuChoice;
         do {
             alunoMenuChoice = printSignupSigninMenu(EnumUserType.ALUNO);
+            AlunoMenu alunoMenu = new AlunoMenu(scannerObj,userInterface);
             switch (alunoMenuChoice) {
                 case 1:
-                    //se novo aluno, chama método de  cadastro de aluno
-                    AlunoMenu alunoMenu = new AlunoMenu(scannerObj,userInterface);
                     Aluno newAluno = alunoMenu.addAluno();
-                    alunoMenu.runMainMenu();
+                    if (newAluno != null)
+                        alunoMenu.runMainMenu(newAluno);
                     break;
                 case 2:
-                    //se existente, chama método de pesquisa de aluno existente
-                    userInterface.writeMenuOption("chama método de pesquisa de aluno existente");
-                    userInterface.writeMenuOption("chama MainMenu de aluno");
+                    Aluno existingAluno = alunoMenu.getExistingAluno();
+                    if (existingAluno != null)
+                        alunoMenu.runMainMenu(existingAluno);
                     break;
                 case 0:
                     userInterface.writeMenuOption("Voltando ao menu anterior...");
