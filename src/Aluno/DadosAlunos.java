@@ -1,6 +1,7 @@
 package Aluno;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class DadosAlunos {
@@ -23,6 +24,18 @@ public class DadosAlunos {
     public static Aluno buscarAluno(int id) {
         try {
             return listaDeAlunosTotal.get(id);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Erro ao buscar aluno: " + e.getMessage());
+            return null;
+        }
+    }
+    public static Aluno buscarAluno(String alunoName) {
+        try {
+            return listaDeAlunosTotal.stream().filter(value );
+            Arrays.stream(values())
+                    .filter(value -> value.getSigla().equals(sigla))
+                    .findFirst()
+                    .orElseThrow();
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Erro ao buscar aluno: " + e.getMessage());
             return null;

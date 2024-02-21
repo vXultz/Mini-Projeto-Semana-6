@@ -33,4 +33,11 @@ public class UserInterface {
     public String writeMenuOption(String option) {
         return writeMenuOption(option, "*");
     }
+
+    public static String getStringInput(Scanner scn) {
+        return scn.nextLine();
+    }
+    public static int nextInt() {
+
+    }
 }
