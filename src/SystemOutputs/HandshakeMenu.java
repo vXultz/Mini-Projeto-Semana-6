@@ -1,6 +1,7 @@
 package SystemOutputs;
 
 import java.util.Scanner;
+import Aluno.Aluno;
 
 
 public class HandshakeMenu {
@@ -63,17 +64,21 @@ public class HandshakeMenu {
             switch (alunoMenuChoice) {
                 case 1:
                     //se novo aluno, chama método de  cadastro de aluno
-                    userInterface.writeMenuOption("chama método de  cadastro de aluno");
-                    userInterface.writeMenuOption("chama MainMenu de aluno");
+                    AlunoMenu alunoMenu = new AlunoMenu(scannerObj,userInterface);
+                    Aluno newAluno = alunoMenu.addAluno();
+                    alunoMenu.runMainMenu();
+                    break;
                 case 2:
                     //se existente, chama método de pesquisa de aluno existente
                     userInterface.writeMenuOption("chama método de pesquisa de aluno existente");
                     userInterface.writeMenuOption("chama MainMenu de aluno");
+                    break;
                 case 0:
                     userInterface.writeMenuOption("Voltando ao menu anterior...");
                     break;
                 default:
                     userInterface.writeMenuOption("A Opção escolhida ["+alunoMenuChoice+"] é inválida, tente novamente");
+                    break;
             }
             userInterface.writeMenuOption("Pressione [ENTER] para continuar");
             scannerObj.nextLine();

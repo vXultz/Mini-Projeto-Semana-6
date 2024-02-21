@@ -18,7 +18,9 @@ public class Aluno {
         this.nome = nome;
         this.idade = idade;
         this.listaDeCursos = new ArrayList<>();
-        DadosAlunos.adicionarAluno(this);
+        //Removido pois impossibilita o uso da classe Aluno sem automaticamente adiciona-lo à lista do sistema
+        //Haverão ocasiões em que precisamos criar um aluno temporário, sem necessáriamente adicionar a lista do sistema.
+        //DadosAlunos.adicionarAluno(this);
     }
 
     // métodos

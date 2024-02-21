@@ -37,7 +37,4 @@ public class UserInterface {
     public static String getStringInput(Scanner scn) {
         return scn.nextLine();
     }
-    public static int nextInt() {
-
-    }
 }

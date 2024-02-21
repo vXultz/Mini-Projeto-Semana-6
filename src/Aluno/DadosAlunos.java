@@ -31,14 +31,16 @@ public class DadosAlunos {
     }
     public static Aluno buscarAluno(String alunoName) {
         try {
-            return listaDeAlunosTotal.stream().filter(value );
-            Arrays.stream(values())
-                    .filter(value -> value.getSigla().equals(sigla))
-                    .findFirst()
-                    .orElseThrow();
-        } catch (IndexOutOfBoundsException e) {
+            Aluno response = listaDeAlunosTotal.stream() // transforma a lista de alunos em um stream,
+                    .filter(aluno -> alunoName.equals(aluno.getNome())) //percorre o stream comparando o param alunoName com o método getName() de cada item
+                    .findFirst() // retornando o item se encontrar
+                    .orElse(null); //retorna null se não encontrar;
+            return response;
+        } catch (Exception e) {
             System.out.println("Erro ao buscar aluno: " + e.getMessage());
             return null;
         }
     }
+
+
 }
