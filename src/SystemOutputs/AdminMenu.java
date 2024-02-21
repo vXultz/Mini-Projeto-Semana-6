@@ -42,6 +42,8 @@ public class AdminMenu {
                     break;
                 case 0:
                     userInterface.writeMenuOption("Saindo do menu de Administração...");
+                default:
+                    userInterface.writeMenuOption("A Opção escolhida [" + adminMenuChoice + "] é inválida, tente novamente");
             }
             userInterface.writeMenuOption("Pressione [ENTER] para continuar");
             scannerObj.nextLine();

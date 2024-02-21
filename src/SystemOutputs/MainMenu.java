@@ -16,6 +16,8 @@ public class MainMenu  {
                     break;
                 case 0:
                     userInterface.writeMenuOption("Saindo do menu de Administração...");
+                default:
+                    userInterface.writeMenuOption("A Opção escolhida ["+menuChoice+"] é inválida, tente novamente");
             }
             userInterface.writeMenuOption("Pressione [ENTER] para continuar");
             scannerObj.nextLine();
