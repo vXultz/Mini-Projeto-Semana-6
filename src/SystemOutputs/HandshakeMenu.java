@@ -12,7 +12,7 @@ public class HandshakeMenu {
     public static void runHandshakeMenu(int menuTotalSize) {
         userInterface = new UserInterface(menuTotalSize);
         scannerObj = new Scanner(System.in);
-        int menuChoice, signinMenuChoice;
+        int menuChoice;
         do {
             menuChoice = printHandshakeMenu();
             EnumUserType loggedUserType;
@@ -58,10 +58,11 @@ public class HandshakeMenu {
                         profMenu.runMainMenu(newProfessor);
                     break;
                 case 2:
-                    userInterface.writeMenuOption("Existing Prof Workflow");
-                    /*Aluno existingAluno = alunoMenu.getExistingAluno();
-                    if (existingAluno != null)
-                        alunoMenu.runMainMenu(existingAluno);*/
+                    Professor existingProfessor = profMenu.getExistingProfessor();
+                    if (existingProfessor != null)
+                        profMenu.runMainMenu(existingProfessor);
+                    userInterface.writeMenuOption("Pressione [ENTER] para continuar");
+                    scannerObj.nextLine();
                     break;
                 case 0:
                     userInterface.writeMenuOption("Voltando ao menu anterior...");
@@ -134,18 +135,6 @@ public class HandshakeMenu {
                 userInterface.writeMenuOption("Selecione uma opção:");
                 userInterface.writeMenuOption("========================================================");
                 break;
-            /*case FUNCIONARIO:
-                userInterface.writeMenuOption("========================================================");
-                userInterface.writeMenuOption(" Login de Funcionário ");
-                userInterface.writeMenuOption("========================================================");
-                userInterface.writeMenuOption("Qual o seu tipo de conta");
-                userInterface.writeMenuOption("[1] - Professor");
-                userInterface.writeMenuOption("[2] - Diretor");
-                userInterface.writeMenuOption("[0] - Voltar ao menu anterior");
-                userInterface.writeMenuOption("");
-                userInterface.writeMenuOption("Selecione uma opção:");
-                userInterface.writeMenuOption("========================================================");
-                break;*/
             case PROFESSOR:
                 userInterface.writeMenuOption("========================================================");
                 userInterface.writeMenuOption(" Login de Professor ");

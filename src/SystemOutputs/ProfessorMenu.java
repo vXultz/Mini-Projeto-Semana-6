@@ -1,6 +1,5 @@
 package SystemOutputs;
 
-import Aluno.Aluno;
 import Funcionario.DadosProfessor;
 import Funcionario.Professor;
 
@@ -74,6 +73,26 @@ public class ProfessorMenu {
     }
     private void runMainMenu(){
         userInterface.writeMenuOption("Aqui será apresentado o menu do Professor ["+ this.currentProfessor.getNome()+"]");
+    }
+
+    public Professor getExistingProfessor() {
+        userInterface.writeMenuOption("Digite o nome para o professor, ou 0 para cancelar:");
+        String profName = UserInterface.getStringInput(scannerObj);
+        if (Objects.equals(profName, "0"))
+            return null;
+        Professor existingProfessor = DadosProfessor.buscarProfessor(profName);
+        if (existingProfessor != null)
+            return existingProfessor;
+        else {
+            userInterface.writeMenuOption("O Professor com nome [" + profName + "], não foi encontrado no cadastro.");
+            userInterface.writeMenuOption("[1] Tentar novamente ");
+            userInterface.writeMenuOption("[2] Cadastrar um novo professor com nome[" + profName + "]");
+            int existingAlunoMenuChoice = UserInterface.nextInt(scannerObj);
+            if (existingAlunoMenuChoice == 2)
+                return getValidNewProfessor(profName);
+            else
+                return getExistingProfessor();
+        }
     }
 
     public Professor getCurrentProfessor() {
