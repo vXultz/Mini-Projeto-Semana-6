@@ -59,7 +59,7 @@ public class ProfessorMenu {
     }
 
     private static int getValidProfessorTempoDeCargo() {
-        userInterface.writeMenuOption("Digite o tempo de cargo do professor, ou [0] para cancelar");
+        userInterface.writeMenuOption("Digite o tempo de cargo do professor em meses, ou [0] para cancelar");
         try {
             return UserInterface.nextInt(scannerObj);
         } catch (Exception e) {
