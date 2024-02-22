@@ -30,7 +30,7 @@ public class ProfessorMenu {
 
     private static Professor getValidNewProfessor(String profName) {
         if (profName == null || profName.isEmpty()) {
-            userInterface.writeMenuOption("Digite o nome para o aluno, ou 0 para cancelar:");
+            userInterface.writeMenuOption("Digite o nome para o professor, ou 0 para cancelar:");
             profName = UserInterface.getStringInput(scannerObj);
             if (Objects.equals(profName, "0"))
                 return null;
