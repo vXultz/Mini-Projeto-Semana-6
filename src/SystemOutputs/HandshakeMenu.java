@@ -2,6 +2,7 @@ package SystemOutputs;
 
 import java.util.Scanner;
 import Aluno.Aluno;
+import Funcionario.Professor;
 
 
 public class HandshakeMenu {
@@ -18,37 +19,72 @@ public class HandshakeMenu {
             switch (menuChoice) {
                 case 1:
                     loggedUserType = EnumUserType.ALUNO;
-                    runAlunoHandShakeMenu();
+                    runAlunoHandshakeMenu();
                     break;
                 case 2:
-                    signinMenuChoice = printSignupSigninMenu(EnumUserType.FUNCIONARIO);
-                    loggedUserType = (signinMenuChoice == 1) ?  EnumUserType.PROFESSOR : EnumUserType.DIRETOR;
-                    /* chama runFuncionarioHandShakeMenu(loggedUserType) contendo seu proprio loop para garantir
-                    * possibilidade de retorno ao menu anterior correto */
+                    loggedUserType = EnumUserType.PROFESSOR;
+                    runProfessorHandshakeMenu();
                     break;
+
                 case 42:
                     loggedUserType = EnumUserType.ADMIN;
                     AdminMenu.runMenu(menuTotalSize);
                     break;
                 case 0:
                     userInterface.writeMenuOption("Encerrando o sistema...");
+                    userInterface.writeMenuOption("Pressione [ENTER] para continuar");
+                    scannerObj.nextLine();
+
                     break;
                 default:
                     userInterface.writeMenuOption("A Opção escolhida [" + menuChoice + "] é inválida, tente novamente");
+                    userInterface.writeMenuOption("Pressione [ENTER] para continuar");
+                    scannerObj.nextLine();
+
                     break;
             }
-            userInterface.writeMenuOption("Pressione [ENTER] para continuar");
-            scannerObj.nextLine();
         } while (menuChoice != 0);
-
     }
+
+    private static void runProfessorHandshakeMenu() {
+        int profMenuChoice;
+        do {
+            profMenuChoice = printSignupSigninMenu(EnumUserType.PROFESSOR);
+            ProfessorMenu profMenu = new ProfessorMenu(scannerObj, userInterface);
+            switch (profMenuChoice) {
+                case 1:
+                    Professor newProfessor = ProfessorMenu.addProfessor();
+                    if (newProfessor != null)
+                        profMenu.runMainMenu(newProfessor);
+                    break;
+                case 2:
+                    userInterface.writeMenuOption("Existing Prof Workflow");
+                    /*Aluno existingAluno = alunoMenu.getExistingAluno();
+                    if (existingAluno != null)
+                        alunoMenu.runMainMenu(existingAluno);*/
+                    break;
+                case 0:
+                    userInterface.writeMenuOption("Voltando ao menu anterior...");
+                    userInterface.writeMenuOption("Pressione [ENTER] para continuar");
+                    scannerObj.nextLine();
+                    break;
+                default:
+                    userInterface.writeMenuOption("A Opção escolhida ["+profMenuChoice+"] é inválida, tente novamente");
+                    userInterface.writeMenuOption("Pressione [ENTER] para continuar");
+                    scannerObj.nextLine();
+                    break;
+            }
+        } while (profMenuChoice != 0);
+    }
+
     private static int printHandshakeMenu() {
         userInterface.writeMenuOption("========================================================");
         userInterface.writeMenuOption(" Bem vindo ao sistema ");
         userInterface.writeMenuOption("========================================================");
         userInterface.writeMenuOption("Por favor, identifique-se:");
         userInterface.writeMenuOption("[1] - Aluno");
-        userInterface.writeMenuOption("[2] - Funcionário");
+        userInterface.writeMenuOption("[2] - Professor");
+        userInterface.writeMenuOption("[3] - Diretor");
         userInterface.writeMenuOption("[0] - Sair do Sistema");
         userInterface.writeMenuOption("");
         userInterface.writeMenuOption("Selecione uma opção:");
@@ -57,7 +93,7 @@ public class HandshakeMenu {
         return UserInterface.nextInt(scannerObj);
     }
 
-    private static void runAlunoHandShakeMenu(){
+    private static void runAlunoHandshakeMenu(){
         int alunoMenuChoice;
         do {
             alunoMenuChoice = printSignupSigninMenu(EnumUserType.ALUNO);
@@ -98,7 +134,7 @@ public class HandshakeMenu {
                 userInterface.writeMenuOption("Selecione uma opção:");
                 userInterface.writeMenuOption("========================================================");
                 break;
-            case FUNCIONARIO:
+            /*case FUNCIONARIO:
                 userInterface.writeMenuOption("========================================================");
                 userInterface.writeMenuOption(" Login de Funcionário ");
                 userInterface.writeMenuOption("========================================================");
@@ -109,7 +145,7 @@ public class HandshakeMenu {
                 userInterface.writeMenuOption("");
                 userInterface.writeMenuOption("Selecione uma opção:");
                 userInterface.writeMenuOption("========================================================");
-                break;
+                break;*/
             case PROFESSOR:
                 userInterface.writeMenuOption("========================================================");
                 userInterface.writeMenuOption(" Login de Professor ");

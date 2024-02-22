@@ -6,13 +6,17 @@ public class Professor extends Funcionario {
     public Professor(String nome, double salario, int tempoDeCargo, EnumCargoFuncionario cargo , int idade) {
         super(nome, salario, tempoDeCargo, cargo);
         this.idade = idade;
-        DadosProfessor.adicionarProfessores(this);
+        //Removido pois impede que a classe seja instanciada em
+        // objetos temporários, ou que não concluam o processo de cadastro
+        //DadosProfessor.adicionarProfessores(this);
     }
 
     public Professor(String nome, int tempoDeCargo, int idade){
         super(nome, tempoDeCargo);
         this.idade = idade;
-        DadosProfessor.adicionarProfessores(this);
+        //Removido pois impede que a classe seja instanciada em
+        // objetos temporários, ou que não concluam o processo de cadastro
+        //DadosProfessor.adicionarProfessores(this);
     }
 
     @Override
