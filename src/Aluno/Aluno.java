@@ -11,7 +11,7 @@ public class Aluno {
     // atributos
     private String nome;
     private int idade;
-    private List<Curso> listaDeCursos = new ArrayList<>();
+    private List<Curso> listaDeCursos;
     private EnumStatusMatricula statusMatricula;
 
 
