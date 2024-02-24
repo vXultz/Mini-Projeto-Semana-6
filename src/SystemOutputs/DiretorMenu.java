@@ -72,11 +72,12 @@ public class DiretorMenu {
             userInterface.writeMenuOption("[3] Listar Todos Alunos");
             userInterface.writeMenuOption("[4] Adicionar Professor");
             userInterface.writeMenuOption("[5] Remover Professor");
-            userInterface.writeMenuOption("[6] Listar Todos Professor");
-            userInterface.writeMenuOption("[7] Criar Turma");
-            userInterface.writeMenuOption("[8] Adicionar Aluno a Turma");
-            userInterface.writeMenuOption("[9] Remover Aluno da Turma");
-            userInterface.writeMenuOption("[10] Listar Alunos da Turma");
+            userInterface.writeMenuOption("[6] Promover Professor");
+            userInterface.writeMenuOption("[7] Listar Todos Professor");
+            userInterface.writeMenuOption("[8] Criar Turma");
+            userInterface.writeMenuOption("[9] Adicionar Aluno a Turma");
+            userInterface.writeMenuOption("[10] Remover Aluno da Turma");
+            userInterface.writeMenuOption("[11] Listar Alunos da Turma");
             userInterface.writeMenuOption("[0] Sair");
 
             int choice = UserInterface.nextInt(scannerObj);
@@ -98,18 +99,21 @@ public class DiretorMenu {
                     removerProfessor();
                     break;
                 case 6:
-                    listarProfessores();
+                    promoverProfessor();
                     break;
                 case 7:
-                    criarTurma();
+                    listarProfessores();
                     break;
                 case 8:
-                    adicionarAlunoNaTurma();
+                    criarTurma();
                     break;
                 case 9:
-                    removerAlunoDaTurma();
+                    adicionarAlunoNaTurma();
                     break;
                 case 10:
+                    removerAlunoDaTurma();
+                    break;
+                case 11:
                     listarAlunosDaTurma();
                     break;
                 case 0:
@@ -125,14 +129,6 @@ public class DiretorMenu {
         userInterface.writeMenuOption("Aqui será apresentado o menu do Diretor [" + this.currentDiretor.getNome() + "]");
     }
 
-    public void promoverProfessor() {
-        userInterface.writeMenuOption("Promover Professor:");
-        Professor professor = ProfessorMenu.getExistingProfessor();
-        if (professor != null) {
-            professor.promover();
-            DadosProfessor.adicionarProfessor(professor);
-        }
-    }
 
     public void listarAlunos() {
         DadosAlunos.mostrarAlunosListados();
@@ -175,6 +171,19 @@ public class DiretorMenu {
         userInterface.writeMenuOption("Digite o ID do Professor a ser removido:");
         int id = UserInterface.nextInt(scannerObj);
         DadosProfessor.removerProfessor(id);
+    }
+
+    public void promoverProfessor() {
+        userInterface.writeMenuOption("Promover Professor:");
+        DadosProfessor.mostrarProfessoresListados();
+        userInterface.writeMenuOption("Digite o ID do Professor a ser promovido:");
+        int id = UserInterface.nextInt(scannerObj);
+        Professor professor = DadosProfessor.buscarProfessor(id);
+        if (professor != null) {
+            professor.promover();
+        } else {
+            userInterface.writeMenuOption("Professor não encontrado.");
+        }
     }
 
     private Professor criarProfessor() {
