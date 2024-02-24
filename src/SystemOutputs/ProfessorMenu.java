@@ -2,7 +2,9 @@ package SystemOutputs;
 
 import Funcionario.DadosProfessor;
 import Funcionario.Professor;
-
+import Aluno.Aluno;
+import Aluno.DadosAlunos;
+import Turma.Turma;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -69,13 +71,88 @@ public class ProfessorMenu {
     }
     public void runMainMenu(Professor loggedProfessor) {
         this.currentProfessor = loggedProfessor;
-        this.runMainMenu();
+        boolean exit = false;
+        while (!exit) {
+            userInterface.writeMenuOption("Aqui será apresentado o menu do Professor [" + this.currentProfessor.getNome() + "]");
+            userInterface.writeMenuOption("[1] Listar turmas");
+            userInterface.writeMenuOption("[2] Adicionar aluno a turma");
+            userInterface.writeMenuOption("[3] Remover aluno da turma");
+            userInterface.writeMenuOption("[0] Sair");
+
+            int choice = UserInterface.nextInt(scannerObj);
+
+            switch (choice) {
+                case 1:
+                    listarAlunosTurma();
+                    break;
+                case 2:
+                    adicionarAlunoTurma();
+                    break;
+                case 3:
+                    removerAlunoTurma();
+                    break;
+                case 0:
+                    exit = true;
+                    break;
+                default:
+                    userInterface.writeMenuOption("Opção inválida!");
+            }
+        }
     }
     private void runMainMenu(){
         userInterface.writeMenuOption("Aqui será apresentado o menu do Professor ["+ this.currentProfessor.getNome()+"]");
     }
 
-    public Professor getExistingProfessor() {
+    public void adicionarAlunoTurma() {
+        if (currentProfessor != null) {
+            Turma turma = currentProfessor.getTurma();
+            if (turma != null) {
+                System.out.println("Digite o nome do aluno que deseja adicionar à turma:");
+                String nomeAluno = scannerObj.nextLine();
+                Aluno aluno = DadosAlunos.buscarAluno(nomeAluno);
+                if (aluno != null) {
+                    currentProfessor.adicionarAlunoTurma(aluno);
+                } else {
+                    System.out.println("Aluno não encontrado.");
+                }
+            } else {
+                System.out.println("O professor " + currentProfessor.getNome() + " não tem uma turma atribuída.");
+            }
+        } else {
+            System.out.println("Não há professor logado.");
+        }
+    }
+
+    public void removerAlunoTurma() {
+        if (currentProfessor != null) {
+            Turma turma = currentProfessor.getTurma();
+            if (turma != null) {
+                System.out.println("Digite o nome do aluno que deseja remover da turma:");
+                String nomeAluno = scannerObj.nextLine();
+                Aluno aluno = DadosAlunos.buscarAluno(nomeAluno);
+                if (aluno != null) {
+                    currentProfessor.removerAlunoTurma(aluno);
+                } else {
+                    System.out.println("Aluno não encontrado.");
+                }
+            } else {
+                System.out.println("O professor " + currentProfessor.getNome() + " não tem uma turma atribuída.");
+            }
+        } else {
+            System.out.println("Não há professor logado.");
+        }
+    }
+
+    public void listarAlunosTurma() {
+        if (currentProfessor != null) {
+            currentProfessor.listarAlunosTurma();
+        } else {
+            System.out.println("Não há professor logado.");
+        }
+    }
+
+
+    public static Professor getExistingProfessor() {
         userInterface.writeMenuOption("Digite o nome para o professor, ou 0 para cancelar:");
         String profName = UserInterface.getStringInput(scannerObj);
         if (Objects.equals(profName, "0"))

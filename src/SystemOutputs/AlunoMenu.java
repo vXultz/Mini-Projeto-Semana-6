@@ -4,6 +4,7 @@ import java.util.Objects;
 import java.util.Scanner;
 import Aluno.Aluno;
 import Aluno.DadosAlunos;
+import Curso.Curso;
 
 public class AlunoMenu {
     private UserInterface userInterface;
@@ -55,13 +56,62 @@ public class AlunoMenu {
         }
     }
 
-    public void runMainMenu(Aluno currentAluno) {
-        this.currentAluno = currentAluno;
-        this.runMainMenu();
+    public void runMainMenu(Aluno loggedAluno) {
+        this.currentAluno = loggedAluno;
+        boolean exit = false;
+        while (!exit) {
+            userInterface.writeMenuOption("Aqui será apresentado o menu do Aluno [" + this.currentAluno.getNome() + "]");
+            userInterface.writeMenuOption("[1] Listar cursos");
+            userInterface.writeMenuOption("[2] Adicionar curso");
+            userInterface.writeMenuOption("[3] Remover curso");
+            userInterface.writeMenuOption("[4] Trancar ou ativar conta");
+            userInterface.writeMenuOption("[0] Sair");
+
+            int choice = UserInterface.nextInt(scannerObj);
+
+            switch (choice) {
+                case 1:
+                    currentAluno.listarCursos();
+                    break;
+                case 2:
+                    adicionarCurso();
+                    break;
+                case 3:
+                    userInterface.writeMenuOption("Digite o ID do curso que deseja remover:");
+                    int idCurso = UserInterface.nextInt(scannerObj);
+                    removerCurso(idCurso);
+                    break;
+                case 4:
+                    currentAluno.trancarOuAtivarConta();
+                    break;
+                case 0:
+                    exit = true;
+                    break;
+                default:
+                    userInterface.writeMenuOption("Opção inválida!");
+            }
+        }
     }
 
     private void runMainMenu(){
         userInterface.writeMenuOption("Aqui será apresentado o menu do Aluno ["+ this.currentAluno.getNome()+"]");
+    }
+
+    private void adicionarCurso() {
+        userInterface.writeMenuOption("Digite o nome do curso que deseja adicionar:");
+        String nomeCurso = UserInterface.getStringInput(scannerObj);
+        Curso curso = new Curso(nomeCurso);
+        currentAluno.getListaDeCursos().add(curso);
+        userInterface.writeMenuOption("Curso adicionado com sucesso!");
+    }
+
+    private void removerCurso(int id) {
+        if (id >= 0 && id < currentAluno.getListaDeCursos().size()) {
+            currentAluno.getListaDeCursos().remove(id);
+            userInterface.writeMenuOption("Curso removido com sucesso!");
+        } else {
+            userInterface.writeMenuOption("ID do curso inválido!");
+        }
     }
 
     public Aluno getExistingAluno() {

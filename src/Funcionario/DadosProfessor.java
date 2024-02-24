@@ -24,6 +24,7 @@ public class DadosProfessor {
 
     }
 
+
     public static Professor buscarProfessor (int id) {
         try {
             Professor professorEncontrado = listaDeProfessores.get(id);
