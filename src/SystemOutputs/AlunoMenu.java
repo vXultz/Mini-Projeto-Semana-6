@@ -5,6 +5,7 @@ import java.util.Scanner;
 import Aluno.Aluno;
 import Aluno.DadosAlunos;
 import Curso.Curso;
+import Turma.DadosTurma;
 
 public class AlunoMenu {
     private UserInterface userInterface;
@@ -98,11 +99,16 @@ public class AlunoMenu {
     }
 
     private void adicionarCurso() {
-        userInterface.writeMenuOption("Digite o nome do curso que deseja adicionar:");
-        String nomeCurso = UserInterface.getStringInput(scannerObj);
-        Curso curso = new Curso(nomeCurso);
-        currentAluno.getListaDeCursos().add(curso);
-        userInterface.writeMenuOption("Curso adicionado com sucesso!");
+        DadosTurma.mostrarTurmasListadas();
+        System.out.println("Deseja se matricular em um dos cursos disponíveis?");
+        System.out.println("(1) Sim");
+        System.out.println("(2) Não");
+        int escolhaMatricula = UserInterface.nextInt(scannerObj);
+        if (escolhaMatricula == 1) {
+            System.out.println("Indique o ID do curso que deseja se matricular:");
+            int id = UserInterface.nextInt(scannerObj);
+            DadosTurma.adicionarAlunoEmCursoDisponivel(id, currentAluno);
+        }
     }
 
     private void removerCurso(int id) {

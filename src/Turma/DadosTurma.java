@@ -1,6 +1,8 @@
 package Turma;
 
 
+import Aluno.Aluno;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +31,18 @@ public class DadosTurma {
         } else {
             System.out.println("Índice da turma inválido.");
             return null;
+        }
+    }
+
+    public static void adicionarAlunoEmCursoDisponivel(int id, Aluno aluno) {
+        try {
+            Turma turmaDisponivelEncontrada = listaDeTurmas.get(id);
+            turmaDisponivelEncontrada.adicionarAluno(aluno);
+            System.out.println("Aluno matriculado com sucesso");
+
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Esse ID não pertence a nenhum curso listado.");
+
         }
     }
 }
