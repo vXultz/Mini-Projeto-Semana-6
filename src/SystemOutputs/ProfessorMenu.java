@@ -64,7 +64,7 @@ public class ProfessorMenu {
             return UserInterface.nextInt(scannerObj);
         } catch (Exception e) {
             System.err.println("Houve um erro com o tempo de cargo digitado. Verifique se é uma idade válida.");
-            return getValidProfessorIdade();
+            return getValidProfessorTempoDeCargo();
         }
     }
     public void runMainMenu(Professor loggedProfessor) {

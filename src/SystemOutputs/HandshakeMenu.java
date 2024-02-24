@@ -2,6 +2,7 @@ package SystemOutputs;
 
 import java.util.Scanner;
 import Aluno.Aluno;
+import Funcionario.Diretor;
 import Funcionario.Professor;
 
 
@@ -24,6 +25,10 @@ public class HandshakeMenu {
                 case 2:
                     loggedUserType = EnumUserType.PROFESSOR;
                     runProfessorHandshakeMenu();
+                    break;
+                case 3:
+                    loggedUserType = EnumUserType.DIRETOR;
+                    runDiretorHandshakeMenu();
                     break;
 
                 case 42:
@@ -76,6 +81,41 @@ public class HandshakeMenu {
                     break;
             }
         } while (profMenuChoice != 0);
+    }
+
+    private static void runDiretorHandshakeMenu(){
+        int userMenuChoice;
+        do {
+            userMenuChoice = printSignupSigninMenu(EnumUserType.DIRETOR);
+            DiretorMenu userMenu = new DiretorMenu(scannerObj, userInterface);
+            switch (userMenuChoice) {
+                case 1:
+                    Diretor newDiretor = DiretorMenu.addDiretor();
+                    if (newDiretor != null) {
+                        userMenu.runMainMenu(newDiretor);
+                        userInterface.writeMenuOption("Pressione [ENTER] para continuar");
+                        scannerObj.nextLine();
+                    }
+                    break;
+                case 2:
+                    Diretor existingDiretor = userMenu.getExistingDiretor();
+                    if (existingDiretor != null)
+                        userMenu.runMainMenu(existingDiretor);
+                    userInterface.writeMenuOption("Pressione [ENTER] para continuar");
+                    scannerObj.nextLine();
+                    break;
+                case 0:
+                    userInterface.writeMenuOption("Voltando ao menu anterior...");
+                    userInterface.writeMenuOption("Pressione [ENTER] para continuar");
+                    scannerObj.nextLine();
+                    break;
+                default:
+                    userInterface.writeMenuOption("A Opção escolhida ["+userMenuChoice+"] é inválida, tente novamente");
+                    userInterface.writeMenuOption("Pressione [ENTER] para continuar");
+                    scannerObj.nextLine();
+                    break;
+            }
+        } while (userMenuChoice != 0);
     }
 
     private static int printHandshakeMenu() {

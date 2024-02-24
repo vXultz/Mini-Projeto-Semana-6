@@ -27,13 +27,26 @@ public class DadosDiretor {
 
     }
 
-    public static Diretor buscaDiretor(int id) {
+    public static Diretor buscarDiretor(int id) {
         try {
             Diretor diretorEncontrado = listaDiretor.get(id);
             System.out.println("ID: " + id + "\n" + diretorEncontrado);
             return diretorEncontrado;
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Esse ID não pertence a nenhum diretor listado");
+            return null;
+        }
+    }
+
+    public static Diretor buscarDiretor(String diretorName) {
+        try {
+            Diretor response = listaDiretor.stream() // transforma a lista de diretores em um stream,
+                    .filter(diretor -> diretorName.equalsIgnoreCase(diretor.getNome())) //percorre o stream comparando o param diretorName com o método getName() de cada item
+                    .findFirst() // retornando o item se encontrar
+                    .orElse(null); //retorna null se não encontrar;
+            return response;
+        } catch (Exception e) {
+            System.out.println("Erro ao buscar diretor: " + e.getMessage());
             return null;
         }
     }
