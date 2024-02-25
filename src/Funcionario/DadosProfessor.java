@@ -1,12 +1,14 @@
 package Funcionario;
 
+import Aluno.Aluno;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class DadosProfessor {
     private static List<Professor> listaDeProfessores = new ArrayList<>();
 
-    public static void adicionarProfessores(Professor professor) {
+    public static void adicionarProfessor(Professor professor) {
         listaDeProfessores.add(professor);
     }
 
@@ -22,6 +24,7 @@ public class DadosProfessor {
 
     }
 
+
     public static Professor buscarProfessor (int id) {
         try {
             Professor professorEncontrado = listaDeProfessores.get(id);
@@ -29,6 +32,18 @@ public class DadosProfessor {
             return professorEncontrado;
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Esse ID não pertence a nenhum professor listado.");
+            return null;
+        }
+    }
+    public static Professor buscarProfessor(String professorName) {
+        try {
+            Professor response = listaDeProfessores.stream() // transforma a lista de professores em um stream,
+                    .filter(professor -> professorName.equalsIgnoreCase(professor.getNome())) //percorre o stream comparando o param professorName com o método getName() de cada item
+                    .findFirst() // retornando o item se encontrar
+                    .orElse(null); //retorna null se não encontrar;
+            return response;
+        } catch (Exception e) {
+            System.out.println("Erro ao buscar professor: " + e.getMessage());
             return null;
         }
     }

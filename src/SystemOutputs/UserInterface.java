@@ -9,30 +9,20 @@ public class UserInterface {
         this.menuTotalSize = screenSize;
     }
 
-    public int adminMenu(Scanner scannerObj, int menuTotalSize) {
-        writeMenuOption("========================================================");
-        writeMenuOption(" Tela de Administração do Sistema");
-        writeMenuOption("========================================================");
-        writeMenuOption("[1] - Teste de Aluno");
-        //writeMenuOption("[] - Teste de Professor");
-        //writeMenuOption("[] - Teste de Curso");
-        //writeMenuOption("[] - Teste de Turma");
-        writeMenuOption("");
-        writeMenuOption("[7] - Listar Enum Status de Matricula");
-        writeMenuOption("[8] - Listar Enum Cargo de Funcionários");
-        writeMenuOption("[0] - Sair do Sistema");
-        writeMenuOption("");
-        writeMenuOption("Selecione uma opção:");
-        writeMenuOption("========================================================");
 
-        return nextInt(scannerObj);
-    }
 
     public static int nextInt(Scanner scn) {
         int i = scn.nextInt();
         scn.nextLine();
         return i;
     }
+
+    public static double getDoubleInput(Scanner scn) {
+        double i = scn.nextDouble();
+        scn.nextLine();
+        return i;
+    }
+
     public String writeMenuOption(String option, String borderChar) {
         int totalSpaces = this.menuTotalSize - option.length() - 4;
         int sideLength = totalSpaces / 2;
@@ -49,5 +39,9 @@ public class UserInterface {
 
     public String writeMenuOption(String option) {
         return writeMenuOption(option, "*");
+    }
+
+    public static String getStringInput(Scanner scn) {
+        return scn.nextLine();
     }
 }
