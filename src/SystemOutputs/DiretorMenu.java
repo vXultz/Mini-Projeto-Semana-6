@@ -216,6 +216,7 @@ public class DiretorMenu {
             Turma turma = new Turma(ano, curso);
             turma.setProfessor(professorSelecionado);
             DadosTurma.adicionarTurma(turma);
+            professorSelecionado.setTurma(turma);
             userInterface.writeMenuOption("Turma criada com sucesso!");
         } else {
             userInterface.writeMenuOption("Nenhum professor selecionado. A turma não foi criada.");

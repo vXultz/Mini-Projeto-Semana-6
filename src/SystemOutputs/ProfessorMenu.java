@@ -74,7 +74,7 @@ public class ProfessorMenu {
         boolean exit = false;
         while (!exit) {
             userInterface.writeMenuOption("Aqui será apresentado o menu do Professor [" + this.currentProfessor.getNome() + "]");
-            userInterface.writeMenuOption("[1] Listar turmas");
+            userInterface.writeMenuOption("[1] Listar alunos da turma");
             userInterface.writeMenuOption("[2] Adicionar aluno a turma");
             userInterface.writeMenuOption("[3] Remover aluno da turma");
             userInterface.writeMenuOption("[0] Sair");
