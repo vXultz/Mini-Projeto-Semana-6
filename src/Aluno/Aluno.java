@@ -58,6 +58,10 @@ public class Aluno {
                 "\nStatus da matrícula" + statusMatricula;
     }
 
+    public void removerCurso(String nomeCurso) {
+        listaDeCursos.removeIf(curso -> curso.getNome().equalsIgnoreCase(nomeCurso));
+    }
+
     // getters e setters
     public String getNome() {
         return nome;

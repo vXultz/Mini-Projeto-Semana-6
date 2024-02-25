@@ -1,11 +1,13 @@
 package SystemOutputs;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 import Aluno.Aluno;
 import Aluno.DadosAlunos;
 import Curso.Curso;
 import Turma.DadosTurma;
+import Turma.Turma;
 
 public class AlunoMenu {
     private UserInterface userInterface;
@@ -78,9 +80,10 @@ public class AlunoMenu {
                     adicionarCurso();
                     break;
                 case 3:
-                    userInterface.writeMenuOption("Digite o ID do curso que deseja remover:");
-                    int idCurso = UserInterface.nextInt(scannerObj);
-                    removerCurso(idCurso);
+                    userInterface.writeMenuOption("Digite o nome do curso que deseja remover:");
+                    String nomeCurso = UserInterface.getStringInput(scannerObj);
+                    removerCurso(nomeCurso);
+                    removerAlunoDaTurma(nomeCurso);
                     break;
                 case 4:
                     currentAluno.trancarOuAtivarConta();
@@ -111,14 +114,32 @@ public class AlunoMenu {
         }
     }
 
-    private void removerCurso(int id) {
-        if (id >= 0 && id < currentAluno.getListaDeCursos().size()) {
-            currentAluno.getListaDeCursos().remove(id);
-            userInterface.writeMenuOption("Curso removido com sucesso!");
+    private void removerCurso(String nomeCurso) {
+        List<Curso> listaDeCursos = currentAluno.getListaDeCursos();
+        boolean cursoEncontrado = false;
+        for (Curso curso : listaDeCursos) {
+            if (curso.getNome().equalsIgnoreCase(nomeCurso)) {
+                listaDeCursos.remove(curso);
+                cursoEncontrado = true;
+                break;
+            }
+        }
+        if (cursoEncontrado) {
+            userInterface.writeMenuOption("Curso \"" + nomeCurso + "\" removido com sucesso!");
         } else {
-            userInterface.writeMenuOption("ID do curso inválido!");
+            userInterface.writeMenuOption("Curso \"" + nomeCurso + "\" não encontrado!");
         }
     }
+
+    public void removerAlunoDaTurma(String nomeCurso) {
+        Turma turma = DadosTurma.buscarPorNomeCurso(nomeCurso);
+        if (turma != null) {
+            turma.removerAluno(currentAluno);
+        } else {
+            userInterface.writeMenuOption("Aluno não se encontra na turma \"" + nomeCurso + "\"");
+        }
+    }
+
 
     public Aluno getExistingAluno() {
         userInterface.writeMenuOption("Digite o nome para o aluno, ou 0 para cancelar:");

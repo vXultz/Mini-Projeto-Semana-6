@@ -45,4 +45,13 @@ public class DadosTurma {
 
         }
     }
+
+    public static Turma buscarPorNomeCurso(String nomeCurso) {
+        for (Turma turma : listaDeTurmas) {
+            if (turma.getCurso().getNome().equals(nomeCurso)) {
+                return turma;
+            }
+        }
+        return null;
+    }
 }

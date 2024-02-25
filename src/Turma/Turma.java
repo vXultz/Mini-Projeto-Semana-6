@@ -21,8 +21,12 @@ public class Turma {
 
 
     public void listarAlunos(){
-        for(int i = 0; i < this.listaDeAlunos.size(); i++){
-            System.out.println(this.listaDeAlunos.get(i).getNome());
+        if (listaDeAlunos.size() <= 0) {
+            System.out.println("A turma selecionada não tem nenhum aluno.");
+        }else {
+            for (int i = 0; i < this.listaDeAlunos.size(); i++) {
+                System.out.println(this.listaDeAlunos.get(i).getNome());
+            }
         }
     }
 
