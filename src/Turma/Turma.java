@@ -2,6 +2,8 @@ package Turma;
 
 import Aluno.Aluno;
 import Curso.Curso;
+import Funcionario.Professor;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +11,7 @@ public class Turma {
     private List<Aluno> listaDeAlunos;
     private int ano;
     private Curso curso;
+    private Professor professor;
 
     public Turma(int ano, Curso curso){
         this.ano = ano;
@@ -16,9 +19,14 @@ public class Turma {
         this.listaDeAlunos = new ArrayList<>();
     }
 
+
     public void listarAlunos(){
-        for(int i = 0; i < this.listaDeAlunos.size(); i++){
-            System.out.println(this.listaDeAlunos.get(i).getNome());
+        if (listaDeAlunos.size() <= 0) {
+            System.out.println("A turma selecionada não tem nenhum aluno.");
+        }else {
+            for (int i = 0; i < this.listaDeAlunos.size(); i++) {
+                System.out.println(this.listaDeAlunos.get(i).getNome());
+            }
         }
     }
 
@@ -53,6 +61,13 @@ public class Turma {
         return listaDeAlunos;
     }
 
+    public Professor getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
+    }
 
     public int getAno() {
         return ano;

@@ -1,7 +1,11 @@
 package SystemOutputs;
 
-import Funcionario.DadosDiretor;
-import Funcionario.Diretor;
+import Aluno.Aluno;
+import Aluno.DadosAlunos;
+import Funcionario.*;
+import Turma.Turma;
+import Turma.DadosTurma;
+import Curso.Curso;
 
 import java.util.Objects;
 import java.util.Scanner;
@@ -45,7 +49,7 @@ public class DiretorMenu {
                 return existingDiretor;
             else
                 return getValidNewDiretor();
-        } else return new Diretor(DiretorName,getValidDiretorTempoDeCargo());
+        } else return new Diretor(DiretorName, getValidDiretorTempoDeCargo());
     }
 
     private static int getValidDiretorTempoDeCargo() {
@@ -57,12 +61,241 @@ public class DiretorMenu {
             return getValidDiretorTempoDeCargo();
         }
     }
+
     public void runMainMenu(Diretor loggedDiretor) {
         this.currentDiretor = loggedDiretor;
-        this.runMainMenu();
+        boolean exit = false;
+        while (!exit) {
+            userInterface.writeMenuOption("Aqui será apresentado o menu do Diretor [" + this.currentDiretor.getNome() + "]");
+            userInterface.writeMenuOption("[1] Adicionar Aluno");
+            userInterface.writeMenuOption("[2] Remover Aluno");
+            userInterface.writeMenuOption("[3] Listar Todos Alunos");
+            userInterface.writeMenuOption("[4] Adicionar Professor");
+            userInterface.writeMenuOption("[5] Remover Professor");
+            userInterface.writeMenuOption("[6] Promover Professor");
+            userInterface.writeMenuOption("[7] Listar Todos Professor");
+            userInterface.writeMenuOption("[8] Criar Turma");
+            userInterface.writeMenuOption("[9] Adicionar Aluno a Turma");
+            userInterface.writeMenuOption("[10] Remover Aluno da Turma");
+            userInterface.writeMenuOption("[11] Listar Alunos da Turma");
+            userInterface.writeMenuOption("[0] Sair");
+
+            int choice = UserInterface.nextInt(scannerObj);
+
+            switch (choice) {
+                case 1:
+                    adicionarAluno();
+                    break;
+                case 2:
+                    removerAluno();
+                    break;
+                case 3:
+                    listarAlunos();
+                    break;
+                case 4:
+                    adicionarProfessor();
+                    break;
+                case 5:
+                    removerProfessor();
+                    break;
+                case 6:
+                    promoverProfessor();
+                    break;
+                case 7:
+                    listarProfessores();
+                    break;
+                case 8:
+                    criarTurma();
+                    break;
+                case 9:
+                    adicionarAlunoNaTurma();
+                    break;
+                case 10:
+                    removerAlunoDaTurma();
+                    break;
+                case 11:
+                    listarAlunosDaTurma();
+                    break;
+                case 0:
+                    exit = true;
+                    break;
+                default:
+                    userInterface.writeMenuOption("Opção inválida!");
+            }
+        }
     }
-    private void runMainMenu(){
-        userInterface.writeMenuOption("Aqui será apresentado o menu do Diretor ["+ this.currentDiretor.getNome()+"]");
+
+    private void runMainMenu() {
+        userInterface.writeMenuOption("Aqui será apresentado o menu do Diretor [" + this.currentDiretor.getNome() + "]");
+    }
+
+
+    public void listarAlunos() {
+        DadosAlunos.mostrarAlunosListados();
+    }
+
+    public void adicionarAluno() {
+        userInterface.writeMenuOption("Adicionar Aluno:");
+        Aluno aluno = criarAluno();
+        DadosAlunos.adicionarAluno(aluno);
+    }
+
+    public void removerAluno() {
+        DadosAlunos.mostrarAlunosListados();
+        userInterface.writeMenuOption("Digite o ID do Aluno a ser removido:");
+        int id = UserInterface.nextInt(scannerObj);
+        DadosAlunos.removerAluno(id);
+    }
+
+    private Aluno criarAluno() {
+        userInterface.writeMenuOption("Digite o nome do Aluno:");
+        String nome = UserInterface.getStringInput(scannerObj);
+        userInterface.writeMenuOption("Digite a idade do Aluno:");
+        int idade = UserInterface.nextInt(scannerObj);
+
+        return new Aluno(nome, idade);
+    }
+
+    public void listarProfessores() {
+        DadosProfessor.mostrarProfessoresListados();
+    }
+
+    public void adicionarProfessor() {
+        userInterface.writeMenuOption("Adicionar Professor:");
+        Professor professor = criarProfessor();
+        DadosProfessor.adicionarProfessor(professor);
+    }
+
+    public void removerProfessor() {
+        DadosProfessor.mostrarProfessoresListados();
+        userInterface.writeMenuOption("Digite o ID do Professor a ser removido:");
+        int id = UserInterface.nextInt(scannerObj);
+        DadosProfessor.removerProfessor(id);
+    }
+
+    public void promoverProfessor() {
+        userInterface.writeMenuOption("Promover Professor:");
+        DadosProfessor.mostrarProfessoresListados();
+        userInterface.writeMenuOption("Digite o ID do Professor a ser promovido:");
+        int id = UserInterface.nextInt(scannerObj);
+        Professor professor = DadosProfessor.buscarProfessor(id);
+        if (professor != null) {
+            professor.promover();
+        } else {
+            userInterface.writeMenuOption("Professor não encontrado.");
+        }
+    }
+
+    private Professor criarProfessor() {
+        userInterface.writeMenuOption("Digite o nome do Professor:");
+        String nome = UserInterface.getStringInput(scannerObj);
+        userInterface.writeMenuOption("Digite a idade do Professor:");
+        int idade = UserInterface.nextInt(scannerObj);
+        userInterface.writeMenuOption("Digite o salário do Professor:");
+        double salario = UserInterface.getDoubleInput(scannerObj);
+        userInterface.writeMenuOption("Digite o tempo de cargo do Professor:");
+        int tempoDeCargo = UserInterface.nextInt(scannerObj);
+        userInterface.writeMenuOption("Digite o nível de cargo do Professor (INICIANTE, EXPERIENTE, AVANCADO):");
+        String cargoInput = UserInterface.getStringInput(scannerObj);
+        EnumCargoFuncionario cargo = EnumCargoFuncionario.valueOf(cargoInput.toUpperCase());
+
+        return new Professor(nome, salario, tempoDeCargo, cargo, idade);
+    }
+
+    public void criarTurma() {
+        userInterface.writeMenuOption("Criar Turma:");
+        userInterface.writeMenuOption("Digite o ano da turma:");
+        int ano = UserInterface.nextInt(scannerObj);
+        userInterface.writeMenuOption("Digite o nome do curso:");
+        String nomeCurso = UserInterface.getStringInput(scannerObj);
+        Curso curso = new Curso(nomeCurso);
+        userInterface.writeMenuOption("Selecione o professor para a turma:");
+        Professor professorSelecionado = selecionarProfessorExistente();
+
+        if (professorSelecionado.getTurma() == null) {
+            Turma turma = new Turma(ano, curso);
+            turma.setProfessor(professorSelecionado);
+            DadosTurma.adicionarTurma(turma);
+            professorSelecionado.setTurma(turma);
+            userInterface.writeMenuOption("Turma criada com sucesso!");
+        } else if (professorSelecionado.getTurma() != null) {
+            userInterface.writeMenuOption("O professor já tem uma turma existente!");
+        } else {
+            userInterface.writeMenuOption("Nenhum professor selecionado. A turma não foi criada.");
+        }
+    }
+
+    private Professor selecionarProfessorExistente() {
+        DadosProfessor.mostrarProfessoresListados();
+        userInterface.writeMenuOption("Digite o ID do professor:");
+        int idProfessor = UserInterface.nextInt(scannerObj);
+        return DadosProfessor.buscarProfessor(idProfessor);
+    }
+
+    public void adicionarAlunoNaTurma() {
+        userInterface.writeMenuOption("Adicionar Aluno na Turma:");
+
+        userInterface.writeMenuOption("Digite o nome do aluno:");
+        String nomeAluno = UserInterface.getStringInput(scannerObj);
+
+        Aluno aluno = DadosAlunos.buscarAluno(nomeAluno);
+        if (aluno != null) {
+            DadosTurma.mostrarTurmasListadas();
+
+            userInterface.writeMenuOption("Digite o índice da turma:");
+            int indiceTurma = UserInterface.nextInt(scannerObj);
+
+            Turma turma = DadosTurma.buscarTurmaPorIndice(indiceTurma);
+            if (turma != null) {
+                turma.adicionarAluno(aluno);
+                userInterface.writeMenuOption("Aluno adicionado na turma com sucesso!");
+            } else {
+                userInterface.writeMenuOption("Turma não encontrada.");
+            }
+        } else {
+            userInterface.writeMenuOption("Aluno não encontrado.");
+        }
+    }
+
+    public void removerAlunoDaTurma() {
+        userInterface.writeMenuOption("Remover Aluno da Turma:");
+
+        userInterface.writeMenuOption("Digite o nome do aluno:");
+        String nomeAluno = UserInterface.getStringInput(scannerObj);
+
+        Aluno aluno = DadosAlunos.buscarAluno(nomeAluno);
+        if (aluno != null) {
+            DadosTurma.mostrarTurmasListadas();
+
+            userInterface.writeMenuOption("Digite o índice da turma:");
+            int indiceTurma = UserInterface.nextInt(scannerObj);
+
+            Turma turma = DadosTurma.buscarTurmaPorIndice(indiceTurma);
+            if (turma != null) {
+                turma.removerAluno(aluno);
+                userInterface.writeMenuOption("Aluno removido da turma com sucesso!");
+            } else {
+                userInterface.writeMenuOption("Turma não encontrada.");
+            }
+        } else {
+            userInterface.writeMenuOption("Aluno não encontrado.");
+        }
+    }
+
+    public void listarAlunosDaTurma() {
+        userInterface.writeMenuOption("Listar Alunos da Turma:");
+
+        DadosTurma.mostrarTurmasListadas();
+
+        userInterface.writeMenuOption("Digite o índice da turma:");
+        int indiceTurma = UserInterface.nextInt(scannerObj);
+
+        Turma turma = DadosTurma.buscarTurmaPorIndice(indiceTurma);
+        if (turma != null) {
+            turma.listarAlunos();
+        } else {
+            userInterface.writeMenuOption("Turma não encontrada.");
+        }
     }
 
     public Diretor getExistingDiretor() {

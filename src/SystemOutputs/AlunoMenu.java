@@ -1,9 +1,13 @@
 package SystemOutputs;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 import Aluno.Aluno;
 import Aluno.DadosAlunos;
+import Curso.Curso;
+import Turma.DadosTurma;
+import Turma.Turma;
 
 public class AlunoMenu {
     private UserInterface userInterface;
@@ -55,14 +59,87 @@ public class AlunoMenu {
         }
     }
 
-    public void runMainMenu(Aluno currentAluno) {
-        this.currentAluno = currentAluno;
-        this.runMainMenu();
+    public void runMainMenu(Aluno loggedAluno) {
+        this.currentAluno = loggedAluno;
+        boolean exit = false;
+        while (!exit) {
+            userInterface.writeMenuOption("Aqui será apresentado o menu do Aluno [" + this.currentAluno.getNome() + "]");
+            userInterface.writeMenuOption("[1] Listar cursos");
+            userInterface.writeMenuOption("[2] Adicionar curso");
+            userInterface.writeMenuOption("[3] Remover curso");
+            userInterface.writeMenuOption("[4] Trancar ou ativar conta");
+            userInterface.writeMenuOption("[0] Sair");
+
+            int choice = UserInterface.nextInt(scannerObj);
+
+            switch (choice) {
+                case 1:
+                    currentAluno.listarCursos();
+                    break;
+                case 2:
+                    adicionarCurso();
+                    break;
+                case 3:
+                    userInterface.writeMenuOption("Digite o nome do curso que deseja remover:");
+                    String nomeCurso = UserInterface.getStringInput(scannerObj);
+                    removerCurso(nomeCurso);
+                    removerAlunoDaTurma(nomeCurso);
+                    break;
+                case 4:
+                    currentAluno.trancarOuAtivarConta();
+                    break;
+                case 0:
+                    exit = true;
+                    break;
+                default:
+                    userInterface.writeMenuOption("Opção inválida!");
+            }
+        }
     }
 
     private void runMainMenu(){
         userInterface.writeMenuOption("Aqui será apresentado o menu do Aluno ["+ this.currentAluno.getNome()+"]");
     }
+
+    private void adicionarCurso() {
+        DadosTurma.mostrarTurmasListadas();
+        System.out.println("Deseja se matricular em um dos cursos disponíveis?");
+        System.out.println("(1) Sim");
+        System.out.println("(2) Não");
+        int escolhaMatricula = UserInterface.nextInt(scannerObj);
+        if (escolhaMatricula == 1) {
+            System.out.println("Indique o ID do curso que deseja se matricular:");
+            int id = UserInterface.nextInt(scannerObj);
+            DadosTurma.adicionarAlunoEmCursoDisponivel(id, currentAluno);
+        }
+    }
+
+    private void removerCurso(String nomeCurso) {
+        List<Curso> listaDeCursos = currentAluno.getListaDeCursos();
+        boolean cursoEncontrado = false;
+        for (Curso curso : listaDeCursos) {
+            if (curso.getNome().equalsIgnoreCase(nomeCurso)) {
+                listaDeCursos.remove(curso);
+                cursoEncontrado = true;
+                break;
+            }
+        }
+        if (cursoEncontrado) {
+            userInterface.writeMenuOption("Curso \"" + nomeCurso + "\" removido com sucesso!");
+        } else {
+            userInterface.writeMenuOption("Curso \"" + nomeCurso + "\" não encontrado!");
+        }
+    }
+
+    public void removerAlunoDaTurma(String nomeCurso) {
+        Turma turma = DadosTurma.buscarPorNomeCurso(nomeCurso);
+        if (turma != null) {
+            turma.removerAluno(currentAluno);
+        } else {
+            userInterface.writeMenuOption("Aluno não se encontra na turma \"" + nomeCurso + "\"");
+        }
+    }
+
 
     public Aluno getExistingAluno() {
         userInterface.writeMenuOption("Digite o nome para o aluno, ou 0 para cancelar:");

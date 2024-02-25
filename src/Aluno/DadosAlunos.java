@@ -42,5 +42,15 @@ public class DadosAlunos {
         }
     }
 
+    public static void mostrarAlunosListados() {
+        if(listaDeAlunosTotal.isEmpty()){
+            System.out.println("Não há nenhum aluno listado.");
+        } else {
+            System.out.println("Alunos listados:");
+            for(int i = 0; i < listaDeAlunosTotal.size(); i++){
+                System.out.println("\nID: " + i + "\n" + listaDeAlunosTotal.get(i));
+            }
+        }
+    }
 
 }

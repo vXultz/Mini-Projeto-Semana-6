@@ -3,13 +3,15 @@ package Aluno;
 import Curso.Curso;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Aluno {
+    Scanner entrada = new Scanner(System.in);
 
     // atributos
     private String nome;
     private int idade;
-    private List<Curso> listaDeCursos = new ArrayList<>();
+    private List<Curso> listaDeCursos;
     private EnumStatusMatricula statusMatricula;
 
 
@@ -29,9 +31,23 @@ public class Aluno {
             System.out.println(nome + " não está matriculado em nenhum curso.");
         } else {
             System.out.println("Cursos matriculados:");
-            for (Curso curso : listaDeCursos) {
-                System.out.println(curso.getNome());
+            for (int i = 0; i < listaDeCursos.size(); i++) {
+                System.out.println("ID: " + i + ", Nome do curso: " + listaDeCursos.get(i).getNome());
             }
+        }
+    }
+
+    public void trancarOuAtivarConta() {
+        System.out.println("Digite 'A' para ativar ou 'T' para trancar a conta:");
+        String opcao = entrada.nextLine();
+        if (opcao.equalsIgnoreCase("A")) {
+            setStatusMatricula(EnumStatusMatricula.ATIVO);
+            System.out.println("Conta ativada com sucesso!");
+        } else if (opcao.equalsIgnoreCase("T")) {
+            setStatusMatricula(EnumStatusMatricula.TRANCADO);
+            System.out.println("Conta trancada com sucesso!");
+        } else {
+            System.out.println("Opção inválida!");
         }
     }
 
@@ -40,6 +56,10 @@ public class Aluno {
         return "Nome: " + nome + "\nIdade: " + idade +
                 "\nLista de curso(s)" + listaDeCursos +
                 "\nStatus da matrícula" + statusMatricula;
+    }
+
+    public void removerCurso(String nomeCurso) {
+        listaDeCursos.removeIf(curso -> curso.getNome().equalsIgnoreCase(nomeCurso));
     }
 
     // getters e setters

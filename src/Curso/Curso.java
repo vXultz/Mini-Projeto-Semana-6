@@ -8,7 +8,7 @@ public class Curso {
 
     @Override
     public String toString(){
-        return "Curso: " + nome + "/" + "Lecionado por: " + professor.getNome();
+        return nome;
     }
 
     public Curso(String nome) {

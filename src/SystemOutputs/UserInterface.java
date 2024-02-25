@@ -16,6 +16,13 @@ public class UserInterface {
         scn.nextLine();
         return i;
     }
+
+    public static double getDoubleInput(Scanner scn) {
+        double i = scn.nextDouble();
+        scn.nextLine();
+        return i;
+    }
+
     public String writeMenuOption(String option, String borderChar) {
         int totalSpaces = this.menuTotalSize - option.length() - 4;
         int sideLength = totalSpaces / 2;
