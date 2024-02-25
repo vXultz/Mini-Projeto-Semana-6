@@ -1,5 +1,11 @@
+import SystemOutputs.AdminMenu;
+import SystemOutputs.MainMenu;
+
+import static SystemOutputs.HandshakeMenu.runHandshakeMenu;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        int menuTotalSize = 100;
+        runHandshakeMenu(menuTotalSize);
     }
 }
