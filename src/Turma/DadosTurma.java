@@ -48,7 +48,7 @@ public class DadosTurma {
 
     public static Turma buscarPorNomeCurso(String nomeCurso) {
         for (Turma turma : listaDeTurmas) {
-            if (turma.getCurso().getNome().equals(nomeCurso)) {
+            if (turma.getCurso().getNome().equalsIgnoreCase(nomeCurso)) {
                 return turma;
             }
         }

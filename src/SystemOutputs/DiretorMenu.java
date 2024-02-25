@@ -212,12 +212,14 @@ public class DiretorMenu {
         userInterface.writeMenuOption("Selecione o professor para a turma:");
         Professor professorSelecionado = selecionarProfessorExistente();
 
-        if (professorSelecionado != null) {
+        if (professorSelecionado.getTurma() == null) {
             Turma turma = new Turma(ano, curso);
             turma.setProfessor(professorSelecionado);
             DadosTurma.adicionarTurma(turma);
             professorSelecionado.setTurma(turma);
             userInterface.writeMenuOption("Turma criada com sucesso!");
+        } else if (professorSelecionado.getTurma() != null) {
+            userInterface.writeMenuOption("O professor já tem uma turma existente!");
         } else {
             userInterface.writeMenuOption("Nenhum professor selecionado. A turma não foi criada.");
         }
